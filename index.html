@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>加法器</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f8f9fa;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #1a1a1a;
+    }
+
+    .container {
+      background: #ffffff;
+      padding: 32px;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 24px;
+      color: #1a1a1a;
+    }
+
+    .calculator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    input[type="text"] {
+      width: 120px;
+      height: 44px;
+      padding: 0 12px;
+      font-size: 18px;
+      font-family: inherit;
+      text-align: center;
+      border: 2px solid #d1d5db;
+      border-radius: 8px;
+      background: #ffffff;
+      color: #1a1a1a;
+      outline: none;
+      transition: all 150ms ease-out;
+    }
+
+    input[type="text"]:hover {
+      border-color: #9ca3af;
+    }
+
+    input[type="text"]:active {
+      border-color: #6b7280;
+      transform: translateY(1px);
+    }
+
+    input[type="text"]:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+      outline: none;
+    }
+
+    input[type="text"].error {
+      border-color: #dc2626;
+      box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2);
+    }
+
+    input[type="text"]::placeholder {
+      color: #9ca3af;
+    }
+
+    .operator {
+      font-size: 20px;
+      font-weight: 500;
+      color: #666;
+    }
+
+    .equals {
+      font-size: 20px;
+      font-weight: 500;
+      color: #666;
+      margin-left: 8px;
+    }
+
+    #result {
+      font-size: 32px;
+      font-weight: 700;
+      color: #1a1a1a;
+      min-width: 80px;
+      transition: color 150ms ease-out;
+    }
+
+    #result.error {
+      color: #dc2626;
+      animation: shake 300ms ease-out;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-4px); }
+      75% { transform: translateX(4px); }
+    }
+
+    .error-message {
+      font-size: 14px;
+      color: #dc2626;
+      min-height: 20px;
+      margin-bottom: 8px;
+    }
+
+    .error-message:empty {
+      visibility: hidden;
+    }
+
+    .hint {
+      font-size: 14px;
+      color: #666;
+      margin-top: 8px;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    input:focus-visible {
+      outline: 2px solid #2563eb;
+      outline-offset: 2px;
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        max-width: 100%;
+        padding: 24px 16px;
+      }
+
+      input[type="text"] {
+        width: 100px;
+        font-size: 16px;
+        height: 40px;
+      }
+
+      h1 {
+        font-size: 20px;
+      }
+
+      #result {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>加法器</h1>
+    <div class="calculator">
+      <label for="a" class="sr-only">第一个数字</label>
+      <input id="a" type="text" inputmode="decimal" aria-label="第一个数字" placeholder="0">
+      <span class="operator" aria-hidden="true">+</span>
+      <label for="b" class="sr-only">第二个数字</label>
+      <input id="b" type="text" inputmode="decimal" aria-label="第二个数字" placeholder="0">
+      <span class="equals" aria-hidden="true">=</span>
+      <span id="result" aria-live="polite" aria-atomic="true">0</span>
+    </div>
+    <div id="errorMsg" class="error-message" role="alert" aria-live="assertive"></div>
+    <p class="hint">输入数字，实时计算</p>
+  </div>
+
+  <script>
+    (function() {
+      'use strict';
+
+      var inputA = document.getElementById('a');
+      var inputB = document.getElementById('b');
+      var resultEl = document.getElementById('result');
+      var errorMsgEl = document.getElementById('errorMsg');
+
+      var VALIDATION_REGEX = /^-?\d*\.?\d*$/;
+
+      function isValidNumber(value) {
+        if (value === '') return true;
+        if (!VALIDATION_REGEX.test(value)) return false;
+        var num = parseFloat(value);
+        if (isNaN(num)) return false;
+        var str = String(num);
+        if (value.indexOf('e') !== -1 || value.indexOf('E') !== -1) return false;
+        return true;
+      }
+
+      function parseToNumber(value) {
+        if (value === '') return 0;
+        return parseFloat(value) || 0;
+      }
+
+      function clearError() {
+        inputA.classList.remove('error');
+        inputB.classList.remove('error');
+        resultEl.classList.remove('error');
+        errorMsgEl.textContent = '';
+      }
+
+      function showError(msg) {
+        inputA.classList.add('error');
+        inputB.classList.add('error');
+        resultEl.classList.add('error');
+        errorMsgEl.textContent = msg;
+      }
+
+      function calculate() {
+        var valA = inputA.value;
+        var valB = inputB.value;
+
+        var validA = isValidNumber(valA);
+        var validB = isValidNumber(valB);
+
+        if (!validA || !validB) {
+          showError('请输入有效数字');
+          resultEl.textContent = '?';
+          return;
+        }
+
+        clearError();
+        var a = parseToNumber(valA);
+        var b = parseToNumber(valB);
+        var sum = a + b;
+
+        if (sum === 0 && valA === '' && valB === '') {
+          resultEl.textContent = '0';
+        } else {
+          resultEl.textContent = sum;
+        }
+      }
+
+      inputA.addEventListener('input', calculate);
+      inputB.addEventListener('input', calculate);
+    })();
+  </script>
+</body>
+</html>
