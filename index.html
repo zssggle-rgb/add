@@ -180,7 +180,9 @@
       if (value === '') return true;
       if (!VALIDATION_REGEX.test(value)) return false;
       const parsed = parseFloat(value);
-      return !isNaN(parsed);
+      if (isNaN(parsed)) return false;
+      // Ensure parseFloat consumed the entire string (not just a numeric prefix)
+      return String(parsed) === value;
     }
 
     function calculate(a, b) {
