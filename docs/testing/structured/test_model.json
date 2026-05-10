@@ -1,0 +1,190 @@
+{
+  "project_name": "add",
+  "coverage_items": [
+    {
+      "coverage_item_id": "CI-001",
+      "target": "正常相加功能",
+      "technique": "边界值",
+      "representative_values": "3+5、100+200、0+0",
+      "expected": "实时显示正确求和结果",
+      "test_basis_ids": [
+        "BASIS-001",
+        "BASIS-002",
+        "BASIS-003",
+        "BASIS-007"
+      ]
+    },
+    {
+      "coverage_item_id": "CI-002",
+      "target": "负数处理",
+      "technique": "等价类",
+      "representative_values": "-3+5、-10+-20、0+-5",
+      "expected": "正确显示负数求和结果",
+      "test_basis_ids": [
+        "BASIS-001",
+        "BASIS-003",
+        "BASIS-007"
+      ]
+    },
+    {
+      "coverage_item_id": "CI-003",
+      "target": "小数处理",
+      "technique": "边界值",
+      "representative_values": "1.5+2.5、0.1+0.2、100.99+200.01",
+      "expected": "正确显示小数求和结果",
+      "test_basis_ids": [
+        "BASIS-001",
+        "BASIS-003",
+        "BASIS-007"
+      ]
+    },
+    {
+      "coverage_item_id": "CI-004",
+      "target": "空输入处理",
+      "technique": "等价类",
+      "representative_values": "(空)+5、3+(空)、(空)+(空)",
+      "expected": "空输入按0处理，不报错",
+      "test_basis_ids": [
+        "BASIS-002",
+        "BASIS-003",
+        "BASIS-007"
+      ]
+    },
+    {
+      "coverage_item_id": "CI-005",
+      "target": "非法字符输入",
+      "technique": "决策表",
+      "representative_values": "a+5、abc+123、!@#$+0",
+      "expected": "显示错误提示（红色边框+抖动）",
+      "test_basis_ids": [
+        "BASIS-002",
+        "BASIS-003",
+        "BASIS-007"
+      ]
+    },
+    {
+      "coverage_item_id": "CI-006",
+      "target": "边界字符输入",
+      "technique": "边界值",
+      "representative_values": "--5+3、1..2+3、1.+.2",
+      "expected": "显示错误提示",
+      "test_basis_ids": [
+        "BASIS-002",
+        "BASIS-003",
+        "BASIS-007"
+      ]
+    },
+    {
+      "coverage_item_id": "CI-007",
+      "target": "Focus视觉效果",
+      "technique": "状态迁移",
+      "representative_values": "点击输入框A、Tab切换到输入框B",
+      "expected": "蓝色边框+3px阴影",
+      "test_basis_ids": [
+        "BASIS-002",
+        "BASIS-010"
+      ]
+    },
+    {
+      "coverage_item_id": "CI-008",
+      "target": "Error状态视觉效果",
+      "technique": "状态迁移",
+      "representative_values": "输入非法字符触发错误",
+      "expected": "红色边框+背景#fef2f2+结果区红色文字+抖动动画300ms",
+      "test_basis_ids": [
+        "BASIS-002",
+        "BASIS-010"
+      ]
+    },
+    {
+      "coverage_item_id": "CI-009",
+      "target": "结果过渡动画",
+      "technique": "交互",
+      "representative_values": "连续改变输入值观察结果变化",
+      "expected": "数字变化时150ms ease-out过渡",
+      "test_basis_ids": [
+        "BASIS-010"
+      ]
+    },
+    {
+      "coverage_item_id": "CI-010",
+      "target": "无障碍label关联",
+      "technique": "可访问性",
+      "representative_values": "屏幕阅读器读取输入框标签",
+      "expected": "label元素正确关联，aria-label生效",
+      "test_basis_ids": [
+        "BASIS-008"
+      ]
+    },
+    {
+      "coverage_item_id": "CI-011",
+      "target": "aria-live实时播报",
+      "technique": "可访问性",
+      "representative_values": "结果变化时屏幕阅读器播报",
+      "expected": "结果区aria-live=\"polite\" aria-atomic=\"true\"生效",
+      "test_basis_ids": [
+        "BASIS-008"
+      ]
+    },
+    {
+      "coverage_item_id": "CI-012",
+      "target": "focus-visible键盘导航",
+      "technique": "可访问性",
+      "representative_values": "Tab键导航到输入框",
+      "expected": "键盘focus显示2px outline outline-offset 2px",
+      "test_basis_ids": [
+        "BASIS-008"
+      ]
+    },
+    {
+      "coverage_item_id": "CI-013",
+      "target": "移动端响应式布局",
+      "technique": "风险",
+      "representative_values": "320px-480px视口宽度",
+      "expected": "容器padding响应为24px 16px，输入框宽度100px",
+      "test_basis_ids": [
+        "BASIS-009"
+      ]
+    },
+    {
+      "coverage_item_id": "CI-014",
+      "target": "hover状态样式",
+      "technique": "交互",
+      "representative_values": "鼠标悬停在输入框",
+      "expected": "边框色加深至#9ca3af",
+      "test_basis_ids": [
+        "BASIS-010"
+      ]
+    },
+    {
+      "coverage_item_id": "CI-015",
+      "target": "active状态样式",
+      "technique": "交互",
+      "representative_values": "鼠标按下输入框",
+      "expected": "边框色#6b7280+translateY(1px)",
+      "test_basis_ids": [
+        "BASIS-010"
+      ]
+    },
+    {
+      "coverage_item_id": "CI-016",
+      "target": "结果复制交互",
+      "technique": "交互",
+      "representative_values": "双击结果区",
+      "expected": "选中结果文本",
+      "test_basis_ids": [
+        "BASIS-004"
+      ]
+    },
+    {
+      "coverage_item_id": "CI-017",
+      "target": "页面直接打开",
+      "technique": "风险",
+      "representative_values": "文件://协议双击打开index.html",
+      "expected": "页面正常加载，无服务器依赖",
+      "test_basis_ids": [
+        "BASIS-005"
+      ]
+    }
+  ]
+}

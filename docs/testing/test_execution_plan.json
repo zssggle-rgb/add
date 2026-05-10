@@ -1,0 +1,922 @@
+{
+  "schema_version": "test-execution-plan/v1",
+  "generated_by": "ensure_test_execution_plan.py",
+  "generation_mode": "deterministic_from_test_cases",
+  "default_url": "index.html",
+  "output": {
+    "file": "e2e/specs/test-plan.spec.js"
+  },
+  "cases": [
+    {
+      "case_id": "TC-ADD-001",
+      "title": "正常相加：3+5=8",
+      "steps": [
+        {
+          "action": "fill",
+          "target": {
+            "selector": "#a"
+          },
+          "value": "3"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "selector": "#b"
+          },
+          "value": "5"
+        },
+        {
+          "assert": "text",
+          "target": {
+            "selector": "#result"
+          },
+          "equals": "8"
+        }
+      ]
+    },
+    {
+      "case_id": "TC-ADD-002",
+      "title": "正常相加：大数100+200=300",
+      "steps": [
+        {
+          "action": "fill",
+          "target": {
+            "selector": "#a"
+          },
+          "value": "100"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "selector": "#b"
+          },
+          "value": "200"
+        },
+        {
+          "assert": "text",
+          "target": {
+            "selector": "#result"
+          },
+          "equals": "300"
+        }
+      ]
+    },
+    {
+      "case_id": "TC-ADD-003",
+      "title": "负数相加：-3+5=2",
+      "steps": [
+        {
+          "action": "fill",
+          "target": {
+            "selector": "#a"
+          },
+          "value": "-3"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "selector": "#b"
+          },
+          "value": "5"
+        },
+        {
+          "assert": "text",
+          "target": {
+            "selector": "#result"
+          },
+          "equals": "2"
+        }
+      ]
+    },
+    {
+      "case_id": "TC-ADD-004",
+      "title": "负数相加：-10+-20=-30",
+      "steps": [
+        {
+          "action": "fill",
+          "target": {
+            "selector": "#a"
+          },
+          "value": "-10"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "selector": "#b"
+          },
+          "value": "-20"
+        },
+        {
+          "assert": "text",
+          "target": {
+            "selector": "#result"
+          },
+          "equals": "-30"
+        }
+      ]
+    },
+    {
+      "case_id": "TC-ADD-005",
+      "title": "小数相加：1.5+2.5=4",
+      "steps": [
+        {
+          "action": "fill",
+          "target": {
+            "selector": "#a"
+          },
+          "value": "1.5"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "selector": "#b"
+          },
+          "value": "2.5"
+        },
+        {
+          "assert": "text",
+          "target": {
+            "selector": "#result"
+          },
+          "equals": "4"
+        }
+      ]
+    },
+    {
+      "case_id": "TC-ADD-006",
+      "title": "小数相加：0.1+0.2=0.3",
+      "steps": [
+        {
+          "action": "fill",
+          "target": {
+            "selector": "#a"
+          },
+          "value": "0.1"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "selector": "#b"
+          },
+          "value": "0.2"
+        },
+        {
+          "assert": "text",
+          "target": {
+            "selector": "#result"
+          },
+          "equals": "0.3"
+        }
+      ]
+    },
+    {
+      "case_id": "TC-ADD-007",
+      "title": "空输入+数字：0+5=5",
+      "steps": [
+        {
+          "action": "fill",
+          "target": {
+            "selector": "#a"
+          },
+          "value": ""
+        },
+        {
+          "action": "fill",
+          "target": {
+            "selector": "#b"
+          },
+          "value": "5"
+        },
+        {
+          "assert": "text",
+          "target": {
+            "selector": "#result"
+          },
+          "equals": "5"
+        }
+      ]
+    },
+    {
+      "case_id": "TC-ADD-008",
+      "title": "数字+空输入：3+0=3",
+      "steps": [
+        {
+          "action": "fill",
+          "target": {
+            "selector": "#b"
+          },
+          "value": ""
+        },
+        {
+          "action": "fill",
+          "target": {
+            "selector": "#a"
+          },
+          "value": "3"
+        },
+        {
+          "assert": "text",
+          "target": {
+            "selector": "#result"
+          },
+          "equals": "3"
+        }
+      ]
+    },
+    {
+      "case_id": "TC-ADD-009",
+      "title": "双空输入：0+0=0",
+      "steps": [
+        {
+          "action": "fill",
+          "target": {
+            "selector": "#a"
+          },
+          "value": ""
+        },
+        {
+          "action": "fill",
+          "target": {
+            "selector": "#b"
+          },
+          "value": ""
+        },
+        {
+          "assert": "text",
+          "target": {
+            "selector": "#result"
+          },
+          "equals": "0"
+        }
+      ]
+    },
+    {
+      "case_id": "TC-ADD-010",
+      "title": "非法字符输入：a+5=错误",
+      "steps": [
+        {
+          "action": "fill",
+          "target": {
+            "selector": "#a"
+          },
+          "value": "a"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "selector": "#b"
+          },
+          "value": "5"
+        },
+        {
+          "assert": "text",
+          "target": {
+            "selector": "#result"
+          },
+          "equals": "×"
+        },
+        {
+          "assert": "classContains",
+          "target": {
+            "selector": "#result"
+          },
+          "pattern": "error"
+        },
+        {
+          "assert": "classContains",
+          "target": {
+            "selector": "#a"
+          },
+          "pattern": "error"
+        },
+        {
+          "assert": "css",
+          "target": {
+            "selector": "#result"
+          },
+          "property": "color",
+          "equals": "#dc2626",
+          "mode": "color"
+        }
+      ]
+    },
+    {
+      "case_id": "TC-ADD-011",
+      "title": "非法字符：abc+123",
+      "steps": [
+        {
+          "action": "fill",
+          "target": {
+            "selector": "#a"
+          },
+          "value": "abc"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "selector": "#b"
+          },
+          "value": "123"
+        },
+        {
+          "assert": "text",
+          "target": {
+            "selector": "#result"
+          },
+          "equals": "×"
+        },
+        {
+          "assert": "classContains",
+          "target": {
+            "selector": "#result"
+          },
+          "pattern": "error"
+        },
+        {
+          "assert": "classContains",
+          "target": {
+            "selector": "#a"
+          },
+          "pattern": "error"
+        },
+        {
+          "assert": "css",
+          "target": {
+            "selector": "#result"
+          },
+          "property": "color",
+          "equals": "#dc2626",
+          "mode": "color"
+        }
+      ]
+    },
+    {
+      "case_id": "TC-ADD-012",
+      "title": "边界字符：--5+3=错误",
+      "steps": [
+        {
+          "action": "fill",
+          "target": {
+            "selector": "#a"
+          },
+          "value": "--5"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "selector": "#b"
+          },
+          "value": "3"
+        },
+        {
+          "assert": "text",
+          "target": {
+            "selector": "#result"
+          },
+          "equals": "×"
+        },
+        {
+          "assert": "classContains",
+          "target": {
+            "selector": "#result"
+          },
+          "pattern": "error"
+        },
+        {
+          "assert": "classContains",
+          "target": {
+            "selector": "#a"
+          },
+          "pattern": "error"
+        },
+        {
+          "assert": "css",
+          "target": {
+            "selector": "#result"
+          },
+          "property": "color",
+          "equals": "#dc2626",
+          "mode": "color"
+        }
+      ]
+    },
+    {
+      "case_id": "TC-ADD-013",
+      "title": "边界字符：1..2+3=错误",
+      "steps": [
+        {
+          "action": "fill",
+          "target": {
+            "selector": "#a"
+          },
+          "value": "1..2"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "selector": "#b"
+          },
+          "value": "3"
+        },
+        {
+          "assert": "text",
+          "target": {
+            "selector": "#result"
+          },
+          "equals": "×"
+        },
+        {
+          "assert": "classContains",
+          "target": {
+            "selector": "#result"
+          },
+          "pattern": "error"
+        },
+        {
+          "assert": "classContains",
+          "target": {
+            "selector": "#a"
+          },
+          "pattern": "error"
+        },
+        {
+          "assert": "css",
+          "target": {
+            "selector": "#result"
+          },
+          "property": "color",
+          "equals": "#dc2626",
+          "mode": "color"
+        }
+      ]
+    },
+    {
+      "case_id": "TC-ADD-014",
+      "title": "Focus效果：点击输入框",
+      "steps": [
+        {
+          "action": "click",
+          "target": {
+            "selector": "#a"
+          }
+        },
+        {
+          "assert": "focused",
+          "target": {
+            "selector": "#a"
+          }
+        },
+        {
+          "assert": "css",
+          "target": {
+            "selector": "#a"
+          },
+          "property": "border-color",
+          "equals": "#2563eb",
+          "mode": "color"
+        },
+        {
+          "assert": "cssContains",
+          "target": {
+            "selector": "#a"
+          },
+          "property": "box-shadow",
+          "contains": "37, 99, 235"
+        },
+        {
+          "evidence": "screenshot",
+          "name": "TC-ADD-014-evidence",
+          "fullPage": true
+        }
+      ]
+    },
+    {
+      "case_id": "TC-ADD-015",
+      "title": "Tab切换焦点",
+      "steps": [
+        {
+          "action": "click",
+          "target": {
+            "selector": "#a"
+          }
+        },
+        {
+          "evidence": "screenshot",
+          "name": "TC-ADD-015-focus-a",
+          "fullPage": true
+        },
+        {
+          "action": "press",
+          "key": "Tab"
+        },
+        {
+          "assert": "focused",
+          "target": {
+            "selector": "#b"
+          }
+        },
+        {
+          "assert": "css",
+          "target": {
+            "selector": "#b"
+          },
+          "property": "border-color",
+          "equals": "#2563eb",
+          "mode": "color"
+        }
+      ]
+    },
+    {
+      "case_id": "TC-ADD-016",
+      "title": "Error抖动动画",
+      "steps": [
+        {
+          "action": "fill",
+          "target": {
+            "selector": "#a"
+          },
+          "value": "a"
+        },
+        {
+          "assert": "text",
+          "target": {
+            "selector": "#result"
+          },
+          "equals": "×"
+        },
+        {
+          "assert": "classContains",
+          "target": {
+            "selector": "#result"
+          },
+          "pattern": "error"
+        },
+        {
+          "assert": "classContains",
+          "target": {
+            "selector": "#a"
+          },
+          "pattern": "error"
+        },
+        {
+          "assert": "css",
+          "target": {
+            "selector": "#result"
+          },
+          "property": "color",
+          "equals": "#dc2626",
+          "mode": "color"
+        },
+        {
+          "evidence": "screenshot",
+          "name": "TC-ADD-016-evidence",
+          "fullPage": true
+        }
+      ]
+    },
+    {
+      "case_id": "TC-ADD-017",
+      "title": "结果过渡动画",
+      "steps": [
+        {
+          "action": "fill",
+          "target": {
+            "selector": "#a"
+          },
+          "value": "3"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "selector": "#b"
+          },
+          "value": "5"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "selector": "#a"
+          },
+          "value": "7"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "selector": "#b"
+          },
+          "value": "2"
+        },
+        {
+          "assert": "text",
+          "target": {
+            "selector": "#result"
+          },
+          "equals": "9"
+        },
+        {
+          "assert": "css",
+          "target": {
+            "selector": "#result"
+          },
+          "property": "transition-duration",
+          "equals": "0.15s"
+        },
+        {
+          "evidence": "screenshot",
+          "name": "TC-ADD-017-evidence",
+          "fullPage": true
+        }
+      ]
+    },
+    {
+      "case_id": "TC-ADD-018",
+      "title": "结果区双击复制",
+      "steps": [
+        {
+          "action": "fill",
+          "target": {
+            "selector": "#a"
+          },
+          "value": "3"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "selector": "#b"
+          },
+          "value": "5"
+        },
+        {
+          "action": "dblclick",
+          "target": {
+            "selector": "#result"
+          }
+        },
+        {
+          "assert": "selectedText",
+          "target": {
+            "selector": "#result"
+          },
+          "contains": "8"
+        },
+        {
+          "evidence": "screenshot",
+          "name": "TC-ADD-018-evidence",
+          "fullPage": true
+        }
+      ]
+    },
+    {
+      "case_id": "TC-ADD-019",
+      "title": "无障碍：屏幕阅读器读取标签",
+      "steps": [
+        {
+          "assert": "visible",
+          "target": {
+            "label": "第一个数字"
+          }
+        },
+        {
+          "assert": "attribute",
+          "target": {
+            "selector": "#a"
+          },
+          "name": "aria-label",
+          "equals": "第一个数字"
+        }
+      ]
+    },
+    {
+      "case_id": "TC-ADD-020",
+      "title": "无障碍：aria-live实时播报",
+      "steps": [
+        {
+          "assert": "attribute",
+          "target": {
+            "selector": "#result"
+          },
+          "name": "aria-live",
+          "equals": "polite"
+        },
+        {
+          "assert": "attribute",
+          "target": {
+            "selector": "#result"
+          },
+          "name": "aria-atomic",
+          "equals": "true"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "selector": "#a"
+          },
+          "value": "3"
+        },
+        {
+          "action": "fill",
+          "target": {
+            "selector": "#b"
+          },
+          "value": "5"
+        }
+      ]
+    },
+    {
+      "case_id": "TC-ADD-021",
+      "title": "无障碍：focus-visible键盘导航",
+      "steps": [
+        {
+          "action": "click",
+          "target": {
+            "selector": "#a"
+          }
+        },
+        {
+          "assert": "focused",
+          "target": {
+            "selector": "#a"
+          }
+        },
+        {
+          "assert": "css",
+          "target": {
+            "selector": "#a"
+          },
+          "property": "border-color",
+          "equals": "#2563eb",
+          "mode": "color"
+        },
+        {
+          "assert": "cssContains",
+          "target": {
+            "selector": "#a"
+          },
+          "property": "box-shadow",
+          "contains": "37, 99, 235"
+        }
+      ]
+    },
+    {
+      "case_id": "TC-ADD-022",
+      "title": "响应式：移动端布局320-480px",
+      "steps": [
+        {
+          "action": "setViewport",
+          "width": 390,
+          "height": 844
+        },
+        {
+          "assert": "visible",
+          "target": {
+            "selector": ".container"
+          }
+        },
+        {
+          "assert": "css",
+          "target": {
+            "selector": "#a"
+          },
+          "property": "width",
+          "equals": "100px"
+        },
+        {
+          "evidence": "screenshot",
+          "name": "TC-ADD-022-mobile",
+          "fullPage": true
+        },
+        {
+          "action": "setViewport",
+          "width": 768,
+          "height": 1024
+        },
+        {
+          "assert": "visible",
+          "target": {
+            "selector": ".container"
+          }
+        },
+        {
+          "evidence": "screenshot",
+          "name": "TC-ADD-022-tablet",
+          "fullPage": true
+        },
+        {
+          "action": "setViewport",
+          "width": 1280,
+          "height": 720
+        },
+        {
+          "assert": "visible",
+          "target": {
+            "selector": ".container"
+          }
+        },
+        {
+          "evidence": "screenshot",
+          "name": "TC-ADD-022-desktop",
+          "fullPage": true
+        }
+      ]
+    },
+    {
+      "case_id": "TC-ADD-023",
+      "title": "hover状态样式",
+      "steps": [
+        {
+          "action": "hover",
+          "target": {
+            "selector": "#a"
+          }
+        },
+        {
+          "assert": "css",
+          "target": {
+            "selector": "#a"
+          },
+          "property": "border-color",
+          "equals": "#9ca3af",
+          "mode": "color"
+        },
+        {
+          "evidence": "screenshot",
+          "name": "TC-ADD-023-evidence",
+          "fullPage": true
+        }
+      ]
+    },
+    {
+      "case_id": "TC-ADD-024",
+      "title": "页面直接打开无需服务器",
+      "steps": [
+        {
+          "assert": "visible",
+          "target": {
+            "selector": "h1"
+          }
+        },
+        {
+          "assert": "visible",
+          "target": {
+            "selector": "#a"
+          }
+        },
+        {
+          "assert": "visible",
+          "target": {
+            "selector": "#b"
+          }
+        },
+        {
+          "assert": "visible",
+          "target": {
+            "selector": "#result"
+          }
+        },
+        {
+          "assert": "noConsoleErrors",
+          "target": {
+            "selector": "body"
+          }
+        }
+      ]
+    },
+    {
+      "case_id": "TC-ADD-025",
+      "title": "active状态样式",
+      "steps": [
+        {
+          "action": "mouseDown",
+          "target": {
+            "selector": "#a"
+          }
+        },
+        {
+          "assert": "css",
+          "target": {
+            "selector": "#a"
+          },
+          "property": "border-color",
+          "equals": "#6b7280",
+          "mode": "color"
+        },
+        {
+          "assert": "cssContains",
+          "target": {
+            "selector": "#a"
+          },
+          "property": "transform",
+          "contains": "matrix"
+        },
+        {
+          "action": "mouseUp"
+        },
+        {
+          "evidence": "screenshot",
+          "name": "TC-ADD-025-evidence",
+          "fullPage": true
+        }
+      ]
+    }
+  ]
+}

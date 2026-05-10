@@ -1,0 +1,437 @@
+{
+  "project_name": "add",
+  "basis_to_cases": [
+    {
+      "basis_id": "BASIS-001",
+      "coverage_item_ids": [
+        "CI-001",
+        "CI-002",
+        "CI-003"
+      ],
+      "case_ids": [
+        "TC-ADD-001",
+        "TC-ADD-002",
+        "TC-ADD-003",
+        "TC-ADD-004",
+        "TC-ADD-005",
+        "TC-ADD-006"
+      ]
+    },
+    {
+      "basis_id": "BASIS-002",
+      "coverage_item_ids": [
+        "CI-001",
+        "CI-004",
+        "CI-005",
+        "CI-006",
+        "CI-007",
+        "CI-008"
+      ],
+      "case_ids": [
+        "TC-ADD-001",
+        "TC-ADD-007",
+        "TC-ADD-008",
+        "TC-ADD-009",
+        "TC-ADD-010",
+        "TC-ADD-011",
+        "TC-ADD-012",
+        "TC-ADD-013",
+        "TC-ADD-014",
+        "TC-ADD-015",
+        "TC-ADD-016"
+      ]
+    },
+    {
+      "basis_id": "BASIS-003",
+      "coverage_item_ids": [
+        "CI-001",
+        "CI-002",
+        "CI-003",
+        "CI-004",
+        "CI-005",
+        "CI-006"
+      ],
+      "case_ids": [
+        "TC-ADD-001",
+        "TC-ADD-002",
+        "TC-ADD-003",
+        "TC-ADD-004",
+        "TC-ADD-005",
+        "TC-ADD-006",
+        "TC-ADD-007",
+        "TC-ADD-008",
+        "TC-ADD-009",
+        "TC-ADD-010",
+        "TC-ADD-011",
+        "TC-ADD-012",
+        "TC-ADD-013"
+      ]
+    },
+    {
+      "basis_id": "BASIS-004",
+      "coverage_item_ids": [
+        "CI-016"
+      ],
+      "case_ids": [
+        "TC-ADD-018"
+      ]
+    },
+    {
+      "basis_id": "BASIS-005",
+      "coverage_item_ids": [
+        "CI-017"
+      ],
+      "case_ids": [
+        "TC-ADD-024"
+      ]
+    },
+    {
+      "basis_id": "BASIS-007",
+      "coverage_item_ids": [
+        "CI-001",
+        "CI-002",
+        "CI-003",
+        "CI-004",
+        "CI-005",
+        "CI-006"
+      ],
+      "case_ids": [
+        "TC-ADD-001",
+        "TC-ADD-002",
+        "TC-ADD-003",
+        "TC-ADD-004",
+        "TC-ADD-005",
+        "TC-ADD-006",
+        "TC-ADD-007",
+        "TC-ADD-008",
+        "TC-ADD-009",
+        "TC-ADD-010",
+        "TC-ADD-011",
+        "TC-ADD-012",
+        "TC-ADD-013"
+      ]
+    },
+    {
+      "basis_id": "BASIS-008",
+      "coverage_item_ids": [
+        "CI-010",
+        "CI-011",
+        "CI-012"
+      ],
+      "case_ids": [
+        "TC-ADD-019",
+        "TC-ADD-020",
+        "TC-ADD-021"
+      ]
+    },
+    {
+      "basis_id": "BASIS-009",
+      "coverage_item_ids": [
+        "CI-013"
+      ],
+      "case_ids": [
+        "TC-ADD-022"
+      ]
+    },
+    {
+      "basis_id": "BASIS-010",
+      "coverage_item_ids": [
+        "CI-007",
+        "CI-008",
+        "CI-009",
+        "CI-014",
+        "CI-015"
+      ],
+      "case_ids": [
+        "TC-ADD-014",
+        "TC-ADD-015",
+        "TC-ADD-016",
+        "TC-ADD-017",
+        "TC-ADD-023"
+      ]
+    }
+  ],
+  "case_to_basis": [
+    {
+      "case_id": "TC-ADD-001",
+      "coverage_item_ids": [
+        "CI-001"
+      ],
+      "test_basis_ids": [
+        "BASIS-001",
+        "BASIS-002",
+        "BASIS-003",
+        "BASIS-007"
+      ],
+      "oracle": "结果区显示8"
+    },
+    {
+      "case_id": "TC-ADD-002",
+      "coverage_item_ids": [
+        "CI-001"
+      ],
+      "test_basis_ids": [
+        "BASIS-001",
+        "BASIS-003",
+        "BASIS-007"
+      ],
+      "oracle": "结果区显示300"
+    },
+    {
+      "case_id": "TC-ADD-003",
+      "coverage_item_ids": [
+        "CI-002"
+      ],
+      "test_basis_ids": [
+        "BASIS-001",
+        "BASIS-003",
+        "BASIS-007"
+      ],
+      "oracle": "结果区显示2"
+    },
+    {
+      "case_id": "TC-ADD-004",
+      "coverage_item_ids": [
+        "CI-002"
+      ],
+      "test_basis_ids": [
+        "BASIS-001",
+        "BASIS-003",
+        "BASIS-007"
+      ],
+      "oracle": "结果区显示-30"
+    },
+    {
+      "case_id": "TC-ADD-005",
+      "coverage_item_ids": [
+        "CI-003"
+      ],
+      "test_basis_ids": [
+        "BASIS-001",
+        "BASIS-003",
+        "BASIS-007"
+      ],
+      "oracle": "结果区显示4"
+    },
+    {
+      "case_id": "TC-ADD-006",
+      "coverage_item_ids": [
+        "CI-003"
+      ],
+      "test_basis_ids": [
+        "BASIS-001",
+        "BASIS-003",
+        "BASIS-007"
+      ],
+      "oracle": "结果区显示0.3"
+    },
+    {
+      "case_id": "TC-ADD-007",
+      "coverage_item_ids": [
+        "CI-004"
+      ],
+      "test_basis_ids": [
+        "BASIS-002",
+        "BASIS-003",
+        "BASIS-007"
+      ],
+      "oracle": "结果区显示5，无错误提示"
+    },
+    {
+      "case_id": "TC-ADD-008",
+      "coverage_item_ids": [
+        "CI-004"
+      ],
+      "test_basis_ids": [
+        "BASIS-002",
+        "BASIS-003",
+        "BASIS-007"
+      ],
+      "oracle": "结果区显示3，无错误提示"
+    },
+    {
+      "case_id": "TC-ADD-009",
+      "coverage_item_ids": [
+        "CI-004"
+      ],
+      "test_basis_ids": [
+        "BASIS-002",
+        "BASIS-003",
+        "BASIS-007"
+      ],
+      "oracle": "结果区显示0，无错误提示"
+    },
+    {
+      "case_id": "TC-ADD-010",
+      "coverage_item_ids": [
+        "CI-005"
+      ],
+      "test_basis_ids": [
+        "BASIS-002",
+        "BASIS-003",
+        "BASIS-007"
+      ],
+      "oracle": "显示错误提示"
+    },
+    {
+      "case_id": "TC-ADD-011",
+      "coverage_item_ids": [
+        "CI-005"
+      ],
+      "test_basis_ids": [
+        "BASIS-002",
+        "BASIS-003",
+        "BASIS-007"
+      ],
+      "oracle": "显示错误提示"
+    },
+    {
+      "case_id": "TC-ADD-012",
+      "coverage_item_ids": [
+        "CI-006"
+      ],
+      "test_basis_ids": [
+        "BASIS-002",
+        "BASIS-003",
+        "BASIS-007"
+      ],
+      "oracle": "显示错误提示"
+    },
+    {
+      "case_id": "TC-ADD-013",
+      "coverage_item_ids": [
+        "CI-006"
+      ],
+      "test_basis_ids": [
+        "BASIS-002",
+        "BASIS-003",
+        "BASIS-007"
+      ],
+      "oracle": "显示错误提示"
+    },
+    {
+      "case_id": "TC-ADD-014",
+      "coverage_item_ids": [
+        "CI-007"
+      ],
+      "test_basis_ids": [
+        "BASIS-002",
+        "BASIS-010"
+      ],
+      "oracle": "蓝色边框+阴影"
+    },
+    {
+      "case_id": "TC-ADD-015",
+      "coverage_item_ids": [
+        "CI-007"
+      ],
+      "test_basis_ids": [
+        "BASIS-002",
+        "BASIS-010"
+      ],
+      "oracle": "焦点正常切换"
+    },
+    {
+      "case_id": "TC-ADD-016",
+      "coverage_item_ids": [
+        "CI-008"
+      ],
+      "test_basis_ids": [
+        "BASIS-002",
+        "BASIS-010"
+      ],
+      "oracle": "红色边框+抖动动画"
+    },
+    {
+      "case_id": "TC-ADD-017",
+      "coverage_item_ids": [
+        "CI-009"
+      ],
+      "test_basis_ids": [
+        "BASIS-010"
+      ],
+      "oracle": "平滑过渡"
+    },
+    {
+      "case_id": "TC-ADD-018",
+      "coverage_item_ids": [
+        "CI-016"
+      ],
+      "test_basis_ids": [
+        "BASIS-004"
+      ],
+      "oracle": "文本被选中"
+    },
+    {
+      "case_id": "TC-ADD-019",
+      "coverage_item_ids": [
+        "CI-010"
+      ],
+      "test_basis_ids": [
+        "BASIS-008"
+      ],
+      "oracle": "读取到\"第一个数字\""
+    },
+    {
+      "case_id": "TC-ADD-020",
+      "coverage_item_ids": [
+        "CI-011"
+      ],
+      "test_basis_ids": [
+        "BASIS-008"
+      ],
+      "oracle": "结果变化时播报"
+    },
+    {
+      "case_id": "TC-ADD-021",
+      "coverage_item_ids": [
+        "CI-012"
+      ],
+      "test_basis_ids": [
+        "BASIS-008"
+      ],
+      "oracle": "显示2px outline"
+    },
+    {
+      "case_id": "TC-ADD-022",
+      "coverage_item_ids": [
+        "CI-013"
+      ],
+      "test_basis_ids": [
+        "BASIS-009"
+      ],
+      "oracle": "响应式布局正常"
+    },
+    {
+      "case_id": "TC-ADD-023",
+      "coverage_item_ids": [
+        "CI-014"
+      ],
+      "test_basis_ids": [
+        "BASIS-010"
+      ],
+      "oracle": "边框色加深"
+    },
+    {
+      "case_id": "TC-ADD-024",
+      "coverage_item_ids": [
+        "CI-017"
+      ],
+      "test_basis_ids": [
+        "BASIS-005"
+      ],
+      "oracle": "页面正常加载"
+    },
+    {
+      "case_id": "TC-ADD-025",
+      "coverage_item_ids": [
+        "CI-015"
+      ],
+      "test_basis_ids": [
+        "BASIS-010"
+      ],
+      "oracle": "边框色#6b7280+translateY(1px)"
+    }
+  ],
+  "coverage_summary": "total_basis: 10; total_cases: 24; basis_coverage: BASIS-001: covered; BASIS-002: covered; BASIS-003: covered; BASIS-004: covered; BASIS-005: covered; BASIS-006: out_of_scope; BASIS-007: covered; BASIS-008: covered; BASIS-009: covered; BASIS-010: covered; coverage_rate: 90%; out_of_scope_basis: BASIS-006"
+}

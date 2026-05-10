@@ -1,0 +1,85 @@
+{
+  "project_name": "add",
+  "basis": [
+    {
+      "basis_id": "BASIS-001",
+      "type": "需求",
+      "source_refs": "docs/software-design/product-design.md",
+      "content": "用户原始需求：REQ-20260507-001。做一个 web 版加法器，有两个输入框，输入数字后实时显示相加之和。",
+      "must_cover": true,
+      "status": "in_scope"
+    },
+    {
+      "basis_id": "BASIS-002",
+      "type": "验收标准",
+      "source_refs": "docs/software-design/product-design.md",
+      "content": "页面可双击在浏览器直接打开；有兩個數字輸入框；輸入數字後實時顯示相加結果；非法輸入有錯誤提示；空輸入不報錯，按0處理；Focus狀態有視覺反饋。",
+      "must_cover": true,
+      "status": "in_scope"
+    },
+    {
+      "basis_id": "BASIS-003",
+      "type": "测试矩阵",
+      "source_refs": "docs/software-design/test-plan.md",
+      "content": "9个场景：正常相加(3+5=8)、负数(-3+5=2)、小数(1.5+2.5=4)、空+数字(0+5=5)、数字+空(3+0=3)、双空(0+0=0)、非法字符(a+5=错误)、边界--5(--5+3=错误)、边界1..2(1..2+3=错误)。",
+      "must_cover": true,
+      "status": "in_scope"
+    },
+    {
+      "basis_id": "BASIS-004",
+      "type": "交互场景",
+      "source_refs": "docs/software-design/test-plan.md",
+      "content": "5个交互场景：Tab切换焦点、Focus效果、Error抖动、结果过渡、复制结果。",
+      "must_cover": true,
+      "status": "in_scope"
+    },
+    {
+      "basis_id": "BASIS-005",
+      "type": "源码约束",
+      "source_refs": "docs/software-design/deep-design.md",
+      "content": "单文件index.html、无外部依赖、local_only CI。",
+      "must_cover": true,
+      "status": "in_scope"
+    },
+    {
+      "basis_id": "BASIS-006",
+      "type": "范围约束",
+      "source_refs": "docs/software-design/product-design.md",
+      "content": "不在范围内：多个数字连加、历史记录、键盘快捷键、移动端优化、科学计算模式、自动化测试套件。",
+      "must_cover": false,
+      "status": "out_of_scope"
+    },
+    {
+      "basis_id": "BASIS-007",
+      "type": "技术约束",
+      "source_refs": "docs/software-design/deep-design.md",
+      "content": "双重验证策略：正则/^-?\\d*\\.?\\d*$/ + parseFloat()。错误路径：正则失败→showError()；parseFloat为NaN→showError()。空输入parseFloat('')按0处理。",
+      "must_cover": true,
+      "status": "in_scope"
+    },
+    {
+      "basis_id": "BASIS-008",
+      "type": "无障碍约束",
+      "source_refs": "docs/software-design/deep-design.md、docs/software-design/ui-design.md",
+      "content": "label关联、aria-label、aria-live、aria-hidden、focus-visible。",
+      "must_cover": true,
+      "status": "in_scope"
+    },
+    {
+      "basis_id": "BASIS-009",
+      "type": "响应式约束",
+      "source_refs": "docs/software-design/ui-design.md",
+      "content": "viewport meta、max-width:480px断点、容器padding响应式。",
+      "must_cover": true,
+      "status": "in_scope"
+    },
+    {
+      "basis_id": "BASIS-010",
+      "type": "视觉规格",
+      "source_refs": "docs/software-design/ui-design.md",
+      "content": "背景#f8f9fa、文字#1a1a1a、accent#2563eb、error#dc2626、border-default#d1d5db。H1 24px/600、结果32px/700、提示14px/#666。输入框120px*44px、容器max400px/padding32px。",
+      "must_cover": true,
+      "status": "in_scope"
+    }
+  ]
+}

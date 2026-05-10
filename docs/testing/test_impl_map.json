@@ -1,0 +1,331 @@
+{
+  "schema_version": "test-impl-map/v1",
+  "generated_by": "compile_test_execution_plan.py",
+  "mappings": [
+    {
+      "case_id": "TC-ADD-001",
+      "driver": "playwright",
+      "files": [
+        "e2e/specs/test-plan.spec.js"
+      ],
+      "test_names": [
+        "TC-ADD-001 正常相加：3+5=8"
+      ],
+      "evidence_files": [
+        "test-results/autopilot-screenshots/TC-ADD-001/"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-002",
+      "driver": "playwright",
+      "files": [
+        "e2e/specs/test-plan.spec.js"
+      ],
+      "test_names": [
+        "TC-ADD-002 正常相加：大数100+200=300"
+      ],
+      "evidence_files": [
+        "test-results/autopilot-screenshots/TC-ADD-002/"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-003",
+      "driver": "playwright",
+      "files": [
+        "e2e/specs/test-plan.spec.js"
+      ],
+      "test_names": [
+        "TC-ADD-003 负数相加：-3+5=2"
+      ],
+      "evidence_files": [
+        "test-results/autopilot-screenshots/TC-ADD-003/"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-004",
+      "driver": "playwright",
+      "files": [
+        "e2e/specs/test-plan.spec.js"
+      ],
+      "test_names": [
+        "TC-ADD-004 负数相加：-10+-20=-30"
+      ],
+      "evidence_files": [
+        "test-results/autopilot-screenshots/TC-ADD-004/"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-005",
+      "driver": "playwright",
+      "files": [
+        "e2e/specs/test-plan.spec.js"
+      ],
+      "test_names": [
+        "TC-ADD-005 小数相加：1.5+2.5=4"
+      ],
+      "evidence_files": [
+        "test-results/autopilot-screenshots/TC-ADD-005/"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-006",
+      "driver": "playwright",
+      "files": [
+        "e2e/specs/test-plan.spec.js"
+      ],
+      "test_names": [
+        "TC-ADD-006 小数相加：0.1+0.2=0.3"
+      ],
+      "evidence_files": [
+        "test-results/autopilot-screenshots/TC-ADD-006/"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-007",
+      "driver": "playwright",
+      "files": [
+        "e2e/specs/test-plan.spec.js"
+      ],
+      "test_names": [
+        "TC-ADD-007 空输入+数字：0+5=5"
+      ],
+      "evidence_files": [
+        "test-results/autopilot-screenshots/TC-ADD-007/"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-008",
+      "driver": "playwright",
+      "files": [
+        "e2e/specs/test-plan.spec.js"
+      ],
+      "test_names": [
+        "TC-ADD-008 数字+空输入：3+0=3"
+      ],
+      "evidence_files": [
+        "test-results/autopilot-screenshots/TC-ADD-008/"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-009",
+      "driver": "playwright",
+      "files": [
+        "e2e/specs/test-plan.spec.js"
+      ],
+      "test_names": [
+        "TC-ADD-009 双空输入：0+0=0"
+      ],
+      "evidence_files": [
+        "test-results/autopilot-screenshots/TC-ADD-009/"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-010",
+      "driver": "playwright",
+      "files": [
+        "e2e/specs/test-plan.spec.js"
+      ],
+      "test_names": [
+        "TC-ADD-010 非法字符输入：a+5=错误"
+      ],
+      "evidence_files": [
+        "test-results/autopilot-screenshots/TC-ADD-010/"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-011",
+      "driver": "playwright",
+      "files": [
+        "e2e/specs/test-plan.spec.js"
+      ],
+      "test_names": [
+        "TC-ADD-011 非法字符：abc+123"
+      ],
+      "evidence_files": [
+        "test-results/autopilot-screenshots/TC-ADD-011/"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-012",
+      "driver": "playwright",
+      "files": [
+        "e2e/specs/test-plan.spec.js"
+      ],
+      "test_names": [
+        "TC-ADD-012 边界字符：--5+3=错误"
+      ],
+      "evidence_files": [
+        "test-results/autopilot-screenshots/TC-ADD-012/"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-013",
+      "driver": "playwright",
+      "files": [
+        "e2e/specs/test-plan.spec.js"
+      ],
+      "test_names": [
+        "TC-ADD-013 边界字符：1..2+3=错误"
+      ],
+      "evidence_files": [
+        "test-results/autopilot-screenshots/TC-ADD-013/"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-014",
+      "driver": "playwright",
+      "files": [
+        "e2e/specs/test-plan.spec.js"
+      ],
+      "test_names": [
+        "TC-ADD-014 Focus效果：点击输入框"
+      ],
+      "evidence_files": [
+        "test-results/autopilot-screenshots/TC-ADD-014/"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-015",
+      "driver": "playwright",
+      "files": [
+        "e2e/specs/test-plan.spec.js"
+      ],
+      "test_names": [
+        "TC-ADD-015 Tab切换焦点"
+      ],
+      "evidence_files": [
+        "test-results/autopilot-screenshots/TC-ADD-015/"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-016",
+      "driver": "playwright",
+      "files": [
+        "e2e/specs/test-plan.spec.js"
+      ],
+      "test_names": [
+        "TC-ADD-016 Error抖动动画"
+      ],
+      "evidence_files": [
+        "test-results/autopilot-screenshots/TC-ADD-016/"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-017",
+      "driver": "playwright",
+      "files": [
+        "e2e/specs/test-plan.spec.js"
+      ],
+      "test_names": [
+        "TC-ADD-017 结果过渡动画"
+      ],
+      "evidence_files": [
+        "test-results/autopilot-screenshots/TC-ADD-017/"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-018",
+      "driver": "playwright",
+      "files": [
+        "e2e/specs/test-plan.spec.js"
+      ],
+      "test_names": [
+        "TC-ADD-018 结果区双击复制"
+      ],
+      "evidence_files": [
+        "test-results/autopilot-screenshots/TC-ADD-018/"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-019",
+      "driver": "playwright",
+      "files": [
+        "e2e/specs/test-plan.spec.js"
+      ],
+      "test_names": [
+        "TC-ADD-019 无障碍：屏幕阅读器读取标签"
+      ],
+      "evidence_files": [
+        "test-results/autopilot-screenshots/TC-ADD-019/"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-020",
+      "driver": "playwright",
+      "files": [
+        "e2e/specs/test-plan.spec.js"
+      ],
+      "test_names": [
+        "TC-ADD-020 无障碍：aria-live实时播报"
+      ],
+      "evidence_files": [
+        "test-results/autopilot-screenshots/TC-ADD-020/"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-021",
+      "driver": "playwright",
+      "files": [
+        "e2e/specs/test-plan.spec.js"
+      ],
+      "test_names": [
+        "TC-ADD-021 无障碍：focus-visible键盘导航"
+      ],
+      "evidence_files": [
+        "test-results/autopilot-screenshots/TC-ADD-021/"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-022",
+      "driver": "playwright",
+      "files": [
+        "e2e/specs/test-plan.spec.js"
+      ],
+      "test_names": [
+        "TC-ADD-022 响应式：移动端布局320-480px"
+      ],
+      "evidence_files": [
+        "test-results/autopilot-screenshots/TC-ADD-022/"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-023",
+      "driver": "playwright",
+      "files": [
+        "e2e/specs/test-plan.spec.js"
+      ],
+      "test_names": [
+        "TC-ADD-023 hover状态样式"
+      ],
+      "evidence_files": [
+        "test-results/autopilot-screenshots/TC-ADD-023/"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-024",
+      "driver": "playwright",
+      "files": [
+        "e2e/specs/test-plan.spec.js"
+      ],
+      "test_names": [
+        "TC-ADD-024 页面直接打开无需服务器"
+      ],
+      "evidence_files": [
+        "test-results/autopilot-screenshots/TC-ADD-024/"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-025",
+      "driver": "playwright",
+      "files": [
+        "e2e/specs/test-plan.spec.js"
+      ],
+      "test_names": [
+        "TC-ADD-025 active状态样式"
+      ],
+      "evidence_files": [
+        "test-results/autopilot-screenshots/TC-ADD-025/"
+      ]
+    }
+  ]
+}
