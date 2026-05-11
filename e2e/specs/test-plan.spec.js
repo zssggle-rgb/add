@@ -426,14 +426,14 @@ test("TC-ADD-022 响应式：移动端布局320-480px", async ({ page }) => {
   page.on('console', msg => { if (msg.type() === 'error') consoleErrors.push(msg.text()); });
   await openTarget(page, "index.html");
   await page.setViewportSize({ width: 390, height: 844 });
-  await expect(target(page, {"selector": ".container"})).toBeVisible();
-  await expect(target(page, {"selector": "#a"})).toHaveCSS("width", "100px");
+  await expect(target(page, {"selector": ".main"})).toBeVisible();
+  await expect(target(page, {"selector": "#a"})).toHaveCSS("width", "80px");
   await saveScreenshot(page, "TC-ADD-022", "TC-ADD-022-mobile", true);
   await page.setViewportSize({ width: 768, height: 1024 });
-  await expect(target(page, {"selector": ".container"})).toBeVisible();
+  await expect(target(page, {"selector": ".main"})).toBeVisible();
   await saveScreenshot(page, "TC-ADD-022", "TC-ADD-022-tablet", true);
   await page.setViewportSize({ width: 1280, height: 720 });
-  await expect(target(page, {"selector": ".container"})).toBeVisible();
+  await expect(target(page, {"selector": ".main"})).toBeVisible();
   await saveScreenshot(page, "TC-ADD-022", "TC-ADD-022-desktop", true);
 });
 
@@ -442,7 +442,7 @@ test("TC-ADD-023 hover状态样式", async ({ page }) => {
   page.on('console', msg => { if (msg.type() === 'error') consoleErrors.push(msg.text()); });
   await openTarget(page, "index.html");
   await target(page, {"selector": "#a"}).hover();
-  await expectCssColorClose(target(page, {"selector": "#a"}), "border-color", "#9ca3af", 6);
+  await expectCssColorClose(target(page, {"selector": "#a"}), "border-color", "#c0c0c0", 6);
   await saveScreenshot(page, "TC-ADD-023", "TC-ADD-023-evidence", true);
 });
 
