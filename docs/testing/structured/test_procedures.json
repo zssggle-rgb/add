@@ -1,0 +1,177 @@
+{
+  "project_name": "add",
+  "environment": {
+    "type": "local",
+    "requires_prepare": false,
+    "requires_check": false,
+    "preconditions": "项目代码已就绪；被测页面或服务入口存在；测试工具可访问项目目录。",
+    "commands": {
+      "test": "npx playwright test e2e/specs/test-plan.spec.js"
+    }
+  },
+  "procedures": [
+    {
+      "procedure_id": "PROC-001",
+      "title": "测试准备",
+      "objective": "确认被测应用入口、关键控件和测试依赖已具备可测试条件。",
+      "priority": "P0",
+      "case_ids": [
+        "TC-ADD-024"
+      ],
+      "start_conditions": "项目代码已就绪；被测页面或服务入口存在；测试工具可访问项目目录。",
+      "stop_conditions": "被测入口无法访问、页面标题不正确或关键元素不可定位时停止，并记录阻断原因。",
+      "evidence_required": [
+        "测试报告",
+        "失败时截图或追踪文件"
+      ],
+      "automation_driver": "测试脚本",
+      "steps": "确认 index.html 文件存在、使用浏览器打开 index.html（文件协议或本地服务器）、确认页面标题显示\"加法器\"、确认有两个输入框（id=a 和 id=b）、确认结果区显示 0"
+    },
+    {
+      "procedure_id": "PROC-002",
+      "title": "功能测试",
+      "objective": "验证功能测试覆盖的测试用例均按预期执行，并留下可追踪证据。",
+      "priority": "P0",
+      "case_ids": [
+        "TC-ADD-001",
+        "TC-ADD-002",
+        "TC-ADD-003",
+        "TC-ADD-004",
+        "TC-ADD-005",
+        "TC-ADD-006",
+        "TC-ADD-007",
+        "TC-ADD-008",
+        "TC-ADD-009",
+        "TC-ADD-010",
+        "TC-ADD-011",
+        "TC-ADD-012",
+        "TC-ADD-013",
+        "TC-ADD-024"
+      ],
+      "start_conditions": "测试准备已完成；被测页面或服务入口可访问；测试脚本和依赖已就绪。",
+      "stop_conditions": "全部执行用例完成；若关键用例失败、页面崩溃、关键元素不可定位或严重错误出现，则停止并记录缺陷。",
+      "evidence_required": [
+        "测试报告",
+        "失败时截图或追踪文件"
+      ],
+      "automation_driver": "Playwright 测试脚本",
+      "steps": "按 TC-ADD-001 至 TC-ADD-009 执行正常相加功能测试、按 TC-ADD-010 至 TC-ADD-013 执行错误输入测试、按 TC-ADD-024 执行页面直接打开测试、记录每条用例的实际输出与预期是否一致"
+    },
+    {
+      "procedure_id": "PROC-003",
+      "title": "交互测试",
+      "objective": "验证交互测试覆盖的测试用例均按预期执行，并留下可追踪证据。",
+      "priority": "P0",
+      "case_ids": [
+        "TC-ADD-014",
+        "TC-ADD-015",
+        "TC-ADD-016",
+        "TC-ADD-017",
+        "TC-ADD-018",
+        "TC-ADD-023",
+        "TC-ADD-025"
+      ],
+      "start_conditions": "测试准备已完成；被测页面或服务入口可访问；测试脚本和依赖已就绪。",
+      "stop_conditions": "全部执行用例完成；若关键用例失败、页面崩溃、关键元素不可定位或严重错误出现，则停止并记录缺陷。",
+      "evidence_required": [
+        "交互前后截图",
+        "关键状态断言",
+        "测试报告"
+      ],
+      "automation_driver": "Playwright 测试脚本",
+      "steps": "按 TC-ADD-014 至 TC-ADD-018 执行 UI 交互测试、观察 focus、hover、active、error 状态样式、验证抖动动画是否正常触发"
+    },
+    {
+      "procedure_id": "PROC-004",
+      "title": "无障碍测试",
+      "objective": "验证无障碍测试覆盖的测试用例均按预期执行，并留下可追踪证据。",
+      "priority": "P1",
+      "case_ids": [
+        "TC-ADD-019",
+        "TC-ADD-020",
+        "TC-ADD-021"
+      ],
+      "start_conditions": "测试准备已完成；被测页面或服务入口可访问；测试脚本和依赖已就绪。",
+      "stop_conditions": "全部执行用例完成；若关键用例失败、页面崩溃、关键元素不可定位或严重错误出现，则停止并记录缺陷。",
+      "evidence_required": [
+        "可访问性结构检查结果",
+        "键盘焦点顺序记录",
+        "测试报告"
+      ],
+      "automation_driver": "Playwright 测试脚本",
+      "steps": "启用屏幕阅读器、按 TC-ADD-019 至 TC-ADD-021 执行无障碍测试、验证 aria 属性和 focus-visible 样式"
+    },
+    {
+      "procedure_id": "PROC-005",
+      "title": "响应式测试",
+      "objective": "验证响应式测试覆盖的测试用例均按预期执行，并留下可追踪证据。",
+      "priority": "P1",
+      "case_ids": [
+        "TC-ADD-022"
+      ],
+      "start_conditions": "测试准备已完成；被测页面或服务入口可访问；测试脚本和依赖已就绪。",
+      "stop_conditions": "全部执行用例完成；若关键用例失败、页面崩溃、关键元素不可定位或严重错误出现，则停止并记录缺陷。",
+      "evidence_required": [
+        "移动端、平板、桌面截图",
+        "布局溢出检查记录",
+        "测试报告"
+      ],
+      "automation_driver": "Playwright 测试脚本",
+      "steps": "缩放浏览器视口到 480px 及以下、按 TC-ADD-022 执行响应式布局测试、验证移动端布局是否符合规格"
+    }
+  ],
+  "execution_groups": [
+    {
+      "group_id": "EG-001",
+      "title": "功能测试组",
+      "case_ids": [
+        "TC-ADD-001",
+        "TC-ADD-002",
+        "TC-ADD-003",
+        "TC-ADD-004",
+        "TC-ADD-005",
+        "TC-ADD-006",
+        "TC-ADD-007",
+        "TC-ADD-008",
+        "TC-ADD-009",
+        "TC-ADD-010",
+        "TC-ADD-011",
+        "TC-ADD-012",
+        "TC-ADD-013",
+        "TC-ADD-024"
+      ],
+      "command": "npx playwright test e2e/specs/test-plan.spec.js --grep \"TC-ADD\""
+    },
+    {
+      "group_id": "EG-002",
+      "title": "UI交互测试组",
+      "case_ids": [
+        "TC-ADD-014",
+        "TC-ADD-015",
+        "TC-ADD-016",
+        "TC-ADD-017",
+        "TC-ADD-018",
+        "TC-ADD-023"
+      ],
+      "command": "npx playwright test e2e/specs/test-plan.spec.js --grep \"TC-ADD-01[4-9]|TC-ADD-02[0-3]\""
+    },
+    {
+      "group_id": "EG-003",
+      "title": "无障碍测试组",
+      "case_ids": [
+        "TC-ADD-019",
+        "TC-ADD-020",
+        "TC-ADD-021"
+      ],
+      "command": "npx playwright test e2e/specs/test-plan.spec.js --grep \"TC-ADD-01[9-2]\""
+    },
+    {
+      "group_id": "EG-004",
+      "title": "响应式测试组",
+      "case_ids": [
+        "TC-ADD-022"
+      ],
+      "command": "npx playwright test e2e/specs/test-plan.spec.js --grep \"TC-ADD-022\""
+    }
+  ]
+}

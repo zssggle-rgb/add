@@ -1,0 +1,699 @@
+{
+  "project_name": "add",
+  "applicable_lanes": [
+    "functional",
+    "ui_interaction",
+    "accessibility",
+    "responsive"
+  ],
+  "disabled_lanes": [
+    {
+      "lane": "unit",
+      "reason": "单HTML页面无独立模块/类，单元测试不适用"
+    },
+    {
+      "lane": "api",
+      "reason": "纯前端单文件，无API接口"
+    },
+    {
+      "lane": "integration",
+      "reason": "无多模块交互，纯单文件应用"
+    },
+    {
+      "lane": "performance",
+      "reason": "单HTML文件无性能测试需求"
+    },
+    {
+      "lane": "security",
+      "reason": "无服务端、无数据持久化，攻击面极小"
+    }
+  ],
+  "test_cases": [
+    {
+      "case_id": "TC-ADD-001",
+      "title": "正常相加：3+5=8",
+      "type": "functional",
+      "priority": "high",
+      "coverage_item_ids": [
+        "CI-001"
+      ],
+      "test_basis_ids": [
+        "BASIS-001",
+        "BASIS-002",
+        "BASIS-003",
+        "BASIS-007"
+      ],
+      "source_refs": "docs/software-design/test-plan.md",
+      "oracle": "结果区显示8",
+      "technique": "边界值",
+      "preconditions": "页面已打开",
+      "inputs": "a：3；b：5",
+      "steps": "在输入框A输入3、在输入框B输入5、观察结果区",
+      "expected": "结果区实时显示8",
+      "automation": "automated",
+      "automation_driver": "playwright",
+      "evidence_required": [
+        "测试报告",
+        "失败时截图或追踪文件"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-002",
+      "title": "正常相加：大数100+200=300",
+      "type": "functional",
+      "priority": "medium",
+      "coverage_item_ids": [
+        "CI-001"
+      ],
+      "test_basis_ids": [
+        "BASIS-001",
+        "BASIS-003",
+        "BASIS-007"
+      ],
+      "source_refs": "docs/software-design/test-plan.md",
+      "oracle": "结果区显示300",
+      "technique": "边界值",
+      "preconditions": "页面已打开",
+      "inputs": "a：100；b：200",
+      "steps": "在输入框A输入100、在输入框B输入200、观察结果区",
+      "expected": "结果区显示300",
+      "automation": "automated",
+      "automation_driver": "playwright",
+      "evidence_required": [
+        "测试报告",
+        "失败时截图或追踪文件"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-003",
+      "title": "负数相加：-3+5=2",
+      "type": "functional",
+      "priority": "high",
+      "coverage_item_ids": [
+        "CI-002"
+      ],
+      "test_basis_ids": [
+        "BASIS-001",
+        "BASIS-003",
+        "BASIS-007"
+      ],
+      "source_refs": "docs/software-design/test-plan.md",
+      "oracle": "结果区显示2",
+      "technique": "等价类",
+      "preconditions": "页面已打开",
+      "inputs": "a：-3；b：5",
+      "steps": "在输入框A输入-3、在输入框B输入5、观察结果区",
+      "expected": "结果区实时显示2",
+      "automation": "automated",
+      "automation_driver": "playwright",
+      "evidence_required": [
+        "测试报告",
+        "失败时截图或追踪文件"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-004",
+      "title": "负数相加：-10+-20=-30",
+      "type": "functional",
+      "priority": "medium",
+      "coverage_item_ids": [
+        "CI-002"
+      ],
+      "test_basis_ids": [
+        "BASIS-001",
+        "BASIS-003",
+        "BASIS-007"
+      ],
+      "source_refs": "docs/software-design/test-plan.md",
+      "oracle": "结果区显示-30",
+      "technique": "等价类",
+      "preconditions": "页面已打开",
+      "inputs": "a：-10；b：-20",
+      "steps": "在输入框A输入-10、在输入框B输入-20、观察结果区",
+      "expected": "结果区显示-30",
+      "automation": "automated",
+      "automation_driver": "playwright",
+      "evidence_required": [
+        "测试报告",
+        "失败时截图或追踪文件"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-005",
+      "title": "小数相加：1.5+2.5=4",
+      "type": "functional",
+      "priority": "high",
+      "coverage_item_ids": [
+        "CI-003"
+      ],
+      "test_basis_ids": [
+        "BASIS-001",
+        "BASIS-003",
+        "BASIS-007"
+      ],
+      "source_refs": "docs/software-design/test-plan.md",
+      "oracle": "结果区显示4",
+      "technique": "边界值",
+      "preconditions": "页面已打开",
+      "inputs": "a：1.5；b：2.5",
+      "steps": "在输入框A输入1.5、在输入框B输入2.5、观察结果区",
+      "expected": "结果区实时显示4",
+      "automation": "automated",
+      "automation_driver": "playwright",
+      "evidence_required": [
+        "测试报告",
+        "失败时截图或追踪文件"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-006",
+      "title": "小数相加：0.1+0.2=0.3",
+      "type": "functional",
+      "priority": "medium",
+      "coverage_item_ids": [
+        "CI-003"
+      ],
+      "test_basis_ids": [
+        "BASIS-001",
+        "BASIS-003",
+        "BASIS-007"
+      ],
+      "source_refs": "docs/software-design/test-plan.md",
+      "oracle": "结果区显示0.3",
+      "technique": "边界值",
+      "preconditions": "页面已打开",
+      "inputs": "a：0.1；b：0.2",
+      "steps": "在输入框A输入0.1、在输入框B输入0.2、观察结果区",
+      "expected": "结果区显示0.3",
+      "automation": "automated",
+      "automation_driver": "playwright",
+      "evidence_required": [
+        "测试报告",
+        "失败时截图或追踪文件"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-007",
+      "title": "空输入+数字：0+5=5",
+      "type": "functional",
+      "priority": "high",
+      "coverage_item_ids": [
+        "CI-004"
+      ],
+      "test_basis_ids": [
+        "BASIS-002",
+        "BASIS-003",
+        "BASIS-007"
+      ],
+      "source_refs": "docs/software-design/test-plan.md",
+      "oracle": "结果区显示5，无错误提示",
+      "technique": "等价类",
+      "preconditions": "页面已打开",
+      "inputs": "b：5",
+      "steps": "清空输入框A（留空）、在输入框B输入5、观察结果区",
+      "expected": "结果区显示5，不报错误",
+      "automation": "automated",
+      "automation_driver": "playwright",
+      "evidence_required": [
+        "测试报告",
+        "失败时截图或追踪文件"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-008",
+      "title": "数字+空输入：3+0=3",
+      "type": "functional",
+      "priority": "high",
+      "coverage_item_ids": [
+        "CI-004"
+      ],
+      "test_basis_ids": [
+        "BASIS-002",
+        "BASIS-003",
+        "BASIS-007"
+      ],
+      "source_refs": "docs/software-design/test-plan.md",
+      "oracle": "结果区显示3，无错误提示",
+      "technique": "等价类",
+      "preconditions": "页面已打开",
+      "inputs": "a：3",
+      "steps": "在输入框A输入3、清空输入框B（留空）、观察结果区",
+      "expected": "结果区显示3，不报错误",
+      "automation": "automated",
+      "automation_driver": "playwright",
+      "evidence_required": [
+        "测试报告",
+        "失败时截图或追踪文件"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-009",
+      "title": "双空输入：0+0=0",
+      "type": "functional",
+      "priority": "high",
+      "coverage_item_ids": [
+        "CI-004"
+      ],
+      "test_basis_ids": [
+        "BASIS-002",
+        "BASIS-003",
+        "BASIS-007"
+      ],
+      "source_refs": "docs/software-design/test-plan.md",
+      "oracle": "结果区显示0，无错误提示",
+      "technique": "等价类",
+      "preconditions": "页面已打开",
+      "inputs": "",
+      "steps": "清空输入框A、清空输入框B、观察结果区",
+      "expected": "结果区显示0，不报错误",
+      "automation": "automated",
+      "automation_driver": "playwright",
+      "evidence_required": [
+        "测试报告",
+        "失败时截图或追踪文件"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-010",
+      "title": "非法字符输入：a+5=错误",
+      "type": "functional",
+      "priority": "high",
+      "coverage_item_ids": [
+        "CI-005"
+      ],
+      "test_basis_ids": [
+        "BASIS-002",
+        "BASIS-003",
+        "BASIS-007"
+      ],
+      "source_refs": "docs/software-design/test-plan.md",
+      "oracle": "显示错误提示",
+      "technique": "决策表",
+      "preconditions": "页面已打开",
+      "inputs": "a：a；b：5",
+      "steps": "在输入框A输入a、在输入框B输入5、观察结果区和输入框状态",
+      "expected": "输入框显示红色边框+背景#fef2f2，结果区显示红色×图标+抖动动画300ms",
+      "automation": "automated",
+      "automation_driver": "playwright",
+      "evidence_required": [
+        "测试报告",
+        "失败时截图或追踪文件"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-011",
+      "title": "非法字符：abc+123",
+      "type": "functional",
+      "priority": "medium",
+      "coverage_item_ids": [
+        "CI-005"
+      ],
+      "test_basis_ids": [
+        "BASIS-002",
+        "BASIS-003",
+        "BASIS-007"
+      ],
+      "source_refs": "docs/software-design/test-plan.md",
+      "oracle": "显示错误提示",
+      "technique": "决策表",
+      "preconditions": "页面已打开",
+      "inputs": "a：abc；b：123",
+      "steps": "在输入框A输入abc、在输入框B输入123、观察结果区",
+      "expected": "显示错误提示",
+      "automation": "automated",
+      "automation_driver": "playwright",
+      "evidence_required": [
+        "测试报告",
+        "失败时截图或追踪文件"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-012",
+      "title": "边界字符：--5+3=错误",
+      "type": "functional",
+      "priority": "high",
+      "coverage_item_ids": [
+        "CI-006"
+      ],
+      "test_basis_ids": [
+        "BASIS-002",
+        "BASIS-003",
+        "BASIS-007"
+      ],
+      "source_refs": "docs/software-design/test-plan.md",
+      "oracle": "显示错误提示",
+      "technique": "边界值",
+      "preconditions": "页面已打开",
+      "inputs": "a：--5；b：3",
+      "steps": "在输入框A输入--5、在输入框B输入3、观察结果区",
+      "expected": "显示错误提示（正则匹配但parseFloat失败）",
+      "automation": "automated",
+      "automation_driver": "playwright",
+      "evidence_required": [
+        "测试报告",
+        "失败时截图或追踪文件"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-013",
+      "title": "边界字符：1..2+3=错误",
+      "type": "functional",
+      "priority": "high",
+      "coverage_item_ids": [
+        "CI-006"
+      ],
+      "test_basis_ids": [
+        "BASIS-002",
+        "BASIS-003",
+        "BASIS-007"
+      ],
+      "source_refs": "docs/software-design/test-plan.md",
+      "oracle": "显示错误提示",
+      "technique": "边界值",
+      "preconditions": "页面已打开",
+      "inputs": "a：1..2；b：3",
+      "steps": "在输入框A输入1..2、在输入框B输入3、观察结果区",
+      "expected": "显示错误提示（正则匹配但parseFloat失败）",
+      "automation": "automated",
+      "automation_driver": "playwright",
+      "evidence_required": [
+        "测试报告",
+        "失败时截图或追踪文件"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-014",
+      "title": "Focus效果：点击输入框",
+      "type": "ui_interaction",
+      "priority": "high",
+      "coverage_item_ids": [
+        "CI-007"
+      ],
+      "test_basis_ids": [
+        "BASIS-002",
+        "BASIS-010"
+      ],
+      "source_refs": "docs/software-design/test-plan.md、docs/software-design/ui-design.md",
+      "oracle": "蓝色边框+阴影",
+      "technique": "状态迁移",
+      "preconditions": "页面已打开",
+      "inputs": "",
+      "steps": "点击输入框A、观察输入框样式变化",
+      "expected": "输入框显示蓝色边框#2563eb+阴影0 0 0 3px rgba(37,99,235,0.2)",
+      "automation": "automated",
+      "automation_driver": "playwright",
+      "evidence_required": [
+        "交互前后截图",
+        "关键状态断言",
+        "测试报告"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-015",
+      "title": "Tab切换焦点",
+      "type": "ui_interaction",
+      "priority": "medium",
+      "coverage_item_ids": [
+        "CI-007"
+      ],
+      "test_basis_ids": [
+        "BASIS-002",
+        "BASIS-010"
+      ],
+      "source_refs": "docs/software-design/test-plan.md、docs/software-design/ui-design.md",
+      "oracle": "焦点正常切换",
+      "technique": "状态迁移",
+      "preconditions": "页面已打开",
+      "inputs": "",
+      "steps": "点击输入框A触发focus、按Tab键、观察焦点切换到输入框B",
+      "expected": "输入框A失去focus样式，输入框B获得蓝色边框+阴影",
+      "automation": "automated",
+      "automation_driver": "playwright",
+      "evidence_required": [
+        "交互前后截图",
+        "关键状态断言",
+        "测试报告"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-016",
+      "title": "Error抖动动画",
+      "type": "ui_interaction",
+      "priority": "high",
+      "coverage_item_ids": [
+        "CI-008"
+      ],
+      "test_basis_ids": [
+        "BASIS-002",
+        "BASIS-010"
+      ],
+      "source_refs": "docs/software-design/test-plan.md、docs/software-design/ui-design.md",
+      "oracle": "红色边框+抖动动画",
+      "technique": "状态迁移",
+      "preconditions": "页面已打开",
+      "inputs": "a：a",
+      "steps": "在输入框A输入非法字符a、观察输入框和结果区样式",
+      "expected": "输入框红色边框#dc2626+背景#fef2f2，结果区红色文字+×图标+shake动画300ms",
+      "automation": "automated",
+      "automation_driver": "playwright",
+      "evidence_required": [
+        "交互前后截图",
+        "关键状态断言",
+        "测试报告"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-017",
+      "title": "结果过渡动画",
+      "type": "ui_interaction",
+      "priority": "medium",
+      "coverage_item_ids": [
+        "CI-009"
+      ],
+      "test_basis_ids": [
+        "BASIS-010"
+      ],
+      "source_refs": "docs/software-design/ui-design.md",
+      "oracle": "平滑过渡",
+      "technique": "交互",
+      "preconditions": "页面已打开",
+      "inputs": "a：3；b：5",
+      "steps": "输入3+5看到结果8、快速改变为7+2、观察结果变化过程",
+      "expected": "结果数字变化时有150ms ease-out过渡动画",
+      "automation": "automated",
+      "automation_driver": "playwright",
+      "evidence_required": [
+        "交互前后截图",
+        "关键状态断言",
+        "测试报告"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-018",
+      "title": "结果区双击复制",
+      "type": "ui_interaction",
+      "priority": "low",
+      "coverage_item_ids": [
+        "CI-016"
+      ],
+      "test_basis_ids": [
+        "BASIS-004"
+      ],
+      "source_refs": "docs/software-design/test-plan.md",
+      "oracle": "文本被选中",
+      "technique": "交互",
+      "preconditions": "页面已打开、已有计算结果",
+      "inputs": "a：3；b：5",
+      "steps": "先输入3+5产生结果8、双击结果区",
+      "expected": "结果文本被选中",
+      "automation": "automated",
+      "automation_driver": "playwright",
+      "evidence_required": [
+        "交互前后截图",
+        "关键状态断言",
+        "测试报告"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-019",
+      "title": "无障碍：屏幕阅读器读取标签",
+      "type": "accessibility",
+      "priority": "medium",
+      "coverage_item_ids": [
+        "CI-010"
+      ],
+      "test_basis_ids": [
+        "BASIS-008"
+      ],
+      "source_refs": "docs/software-design/deep-design.md、docs/software-design/ui-design.md",
+      "oracle": "读取到'第一个数字'",
+      "technique": "可访问性",
+      "preconditions": "页面已打开、屏幕阅读器已启用",
+      "inputs": "",
+      "steps": "使用屏幕阅读器聚焦到输入框A、读取标签内容",
+      "expected": "屏幕阅读器读取到\"第一个数字\"",
+      "automation": "automated",
+      "automation_driver": "playwright",
+      "evidence_required": [
+        "可访问性结构检查结果",
+        "键盘焦点顺序记录",
+        "测试报告"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-020",
+      "title": "无障碍：aria-live实时播报",
+      "type": "accessibility",
+      "priority": "medium",
+      "coverage_item_ids": [
+        "CI-011"
+      ],
+      "test_basis_ids": [
+        "BASIS-008"
+      ],
+      "source_refs": "docs/software-design/deep-design.md、docs/software-design/ui-design.md",
+      "oracle": "结果变化时播报",
+      "technique": "可访问性",
+      "preconditions": "页面已打开、屏幕阅读器已启用",
+      "inputs": "a：3；b：5",
+      "steps": "在结果区设置aria-live=\"polite\"、改变输入值触发结果变化、观察屏幕阅读器是否播报",
+      "expected": "结果变化时屏幕阅读器播报新结果",
+      "automation": "automated",
+      "automation_driver": "playwright",
+      "evidence_required": [
+        "可访问性结构检查结果",
+        "键盘焦点顺序记录",
+        "测试报告"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-021",
+      "title": "无障碍：focus-visible键盘导航",
+      "type": "accessibility",
+      "priority": "medium",
+      "coverage_item_ids": [
+        "CI-012"
+      ],
+      "test_basis_ids": [
+        "BASIS-008"
+      ],
+      "source_refs": "docs/software-design/deep-design.md、docs/software-design/ui-design.md",
+      "oracle": "显示2px outline",
+      "technique": "可访问性",
+      "preconditions": "页面已打开",
+      "inputs": "",
+      "steps": "用Tab键导航到输入框（键盘操作，非鼠标）、观察focus样式",
+      "expected": "显示2px solid #2563eb outline，outline-offset 2px",
+      "automation": "automated",
+      "automation_driver": "playwright",
+      "evidence_required": [
+        "可访问性结构检查结果",
+        "键盘焦点顺序记录",
+        "测试报告"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-022",
+      "title": "响应式：移动端布局320-480px",
+      "type": "responsive",
+      "priority": "low",
+      "coverage_item_ids": [
+        "CI-013"
+      ],
+      "test_basis_ids": [
+        "BASIS-009"
+      ],
+      "source_refs": "docs/software-design/ui-design.md",
+      "oracle": "响应式布局正常",
+      "technique": "风险",
+      "preconditions": "页面已打开",
+      "inputs": "",
+      "steps": "缩放浏览器视口到480px宽度、观察容器和输入框布局",
+      "expected": "容器max-width:100%，padding:24px 16px，输入框width:100px",
+      "automation": "automated",
+      "automation_driver": "playwright",
+      "evidence_required": [
+        "移动端、平板、桌面截图",
+        "布局溢出检查记录",
+        "测试报告"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-023",
+      "title": "hover状态样式",
+      "type": "ui_interaction",
+      "priority": "low",
+      "coverage_item_ids": [
+        "CI-014"
+      ],
+      "test_basis_ids": [
+        "BASIS-010"
+      ],
+      "source_refs": "docs/software-design/ui-design.md",
+      "oracle": "边框色加深",
+      "technique": "交互",
+      "preconditions": "页面已打开",
+      "inputs": "",
+      "steps": "鼠标悬停在输入框上（不点击）",
+      "expected": "边框色变为#9ca3af",
+      "automation": "automated",
+      "automation_driver": "playwright",
+      "evidence_required": [
+        "交互前后截图",
+        "关键状态断言",
+        "测试报告"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-024",
+      "title": "页面直接打开无需服务器",
+      "type": "functional",
+      "priority": "high",
+      "coverage_item_ids": [
+        "CI-017"
+      ],
+      "test_basis_ids": [
+        "BASIS-005"
+      ],
+      "source_refs": "docs/software-design/product-design.md",
+      "oracle": "页面正常加载",
+      "technique": "风险",
+      "preconditions": "",
+      "inputs": "",
+      "steps": "使用文件://协议双击打开index.html、观察页面是否正常加载",
+      "expected": "页面正常加载，无JavaScript错误，所有元素正常显示",
+      "automation": "automated",
+      "automation_driver": "playwright",
+      "evidence_required": [
+        "测试报告",
+        "失败时截图或追踪文件"
+      ]
+    },
+    {
+      "case_id": "TC-ADD-025",
+      "title": "active状态样式",
+      "type": "ui_interaction",
+      "priority": "low",
+      "coverage_item_ids": [
+        "CI-015"
+      ],
+      "test_basis_ids": [
+        "BASIS-010"
+      ],
+      "source_refs": "docs/software-design/ui-design.md",
+      "oracle": "边框色#6b7280+translateY(1px)",
+      "technique": "交互",
+      "preconditions": "页面已打开",
+      "inputs": "",
+      "steps": "鼠标按下输入框（不释放）、观察输入框样式",
+      "expected": "边框色变为#6b7280，元素轻微下沉translateY(1px)",
+      "automation": "automated",
+      "automation_driver": "playwright",
+      "evidence_required": [
+        "交互前后截图",
+        "关键状态断言",
+        "测试报告"
+      ]
+    }
+  ]
+}

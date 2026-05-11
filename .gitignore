@@ -1,0 +1,13 @@
+node_modules/
+playwright-report/
+test-results/
+
+
+# Autopilot runtime test records
+.autopilot/test-runs/
+
+# gstack local runtime state
+.gstack/
+
+# Browser automation local runtime state
+.playwright-mcp/
