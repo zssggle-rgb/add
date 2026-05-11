@@ -86,11 +86,16 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
+      width: 100%;
+      max-width: 520px;
+      padding: 0 16px;
       margin-bottom: 20px;
     }
 
     input[type="text"] {
       width: 140px;
+      flex: 0 1 140px;
+      min-width: 0;
       height: 44px;
       border: 1px solid #dfe1e5;
       border-radius: 24px;
@@ -256,6 +261,7 @@
 
       input[type="text"] {
         width: 80px;
+        flex-basis: 80px;
         height: 40px;
         padding: 0 10px;
         font-size: 15px;
