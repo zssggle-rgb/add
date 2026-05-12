@@ -11,6 +11,10 @@
       padding: 0;
     }
 
+    :root {
+      --transition-duration: 150ms;
+    }
+
     body {
       min-height: 100vh;
       display: flex;
@@ -48,7 +52,7 @@
       text-decoration: none;
       padding: 6px 10px;
       border-radius: 4px;
-      transition: background 150ms ease;
+      transition: background var(--transition-duration) ease;
     }
 
     .header-link:hover {
@@ -94,7 +98,7 @@
     input[type="text"] {
       width: 140px;
       flex: 0 1 140px;
-      min-width: 0;
+      min-width: 48px;
       height: 44px;
       border: 1px solid #dfe1e5;
       border-radius: 24px;
@@ -103,7 +107,7 @@
       font-family: inherit;
       color: #202124;
       background: #ffffff;
-      transition: border-color 150ms ease-out, box-shadow 150ms ease-out;
+      transition: border-color var(--transition-duration) ease-out, box-shadow var(--transition-duration) ease-out;
       outline: none;
       box-shadow: none;
     }
@@ -147,7 +151,7 @@
       color: #202124;
       min-width: 60px;
       text-align: center;
-      transition: color 150ms ease-out;
+      transition: color var(--transition-duration) ease-out;
       cursor: text;
       user-select: text;
     }
@@ -190,7 +194,7 @@
       font-size: 14px;
       font-family: inherit;
       cursor: pointer;
-      transition: border-color 150ms ease, box-shadow 150ms ease, background 150ms ease;
+      transition: border-color var(--transition-duration) ease, box-shadow var(--transition-duration) ease, background var(--transition-duration) ease;
       line-height: 36px;
       user-select: none;
     }
@@ -238,12 +242,19 @@
       text-decoration: none;
       padding: 4px 8px;
       border-radius: 4px;
-      transition: background 150ms ease;
+      transition: background var(--transition-duration) ease;
     }
 
     .footer-link:hover {
       background: #e8eaed;
       color: #202124;
+    }
+
+    /* ── Short viewport safety ── */
+    @media (max-height: 500px) {
+      .main {
+        margin-top: 0;
+      }
     }
 
     /* ── Responsive ── */
@@ -294,8 +305,8 @@
 <body>
   <!-- Header -->
   <div class="header">
-    <a class="header-link" href="#" tabindex="-1" onclick="return false">Gmail</a>
-    <a class="header-link" href="#" tabindex="-1" onclick="return false">图片</a>
+    <span class="header-link">Gmail</span>
+    <span class="header-link">图片</span>
   </div>
 
   <!-- Main content -->
@@ -304,10 +315,10 @@
 
     <div class="calculator">
       <label for="a" class="sr-only">第一个数字</label>
-      <input id="a" type="text" inputmode="decimal" aria-label="第一个数字" />
+      <input id="a" type="text" inputmode="decimal" aria-label="第一个数字" maxlength="20" />
       <span class="operator">+</span>
       <label for="b" class="sr-only">第二个数字</label>
-      <input id="b" type="text" inputmode="decimal" aria-label="第二个数字" />
+      <input id="b" type="text" inputmode="decimal" aria-label="第二个数字" maxlength="20" />
       <span class="equals">=</span>
       <span id="result" aria-live="polite" aria-atomic="true">0</span>
       <span class="error-icon" aria-hidden="true">&#x2715;</span>
@@ -323,10 +334,10 @@
   <!-- Footer -->
   <div class="footer">
     <div class="footer-links">
-      <a class="footer-link" href="#" tabindex="-1" onclick="return false">关于</a>
-      <a class="footer-link" href="#" tabindex="-1" onclick="return false">广告</a>
-      <a class="footer-link" href="#" tabindex="-1" onclick="return false">隐私权</a>
-      <a class="footer-link" href="#" tabindex="-1" onclick="return false">条款</a>
+      <span class="footer-link">关于</span>
+      <span class="footer-link">广告</span>
+      <span class="footer-link">隐私权</span>
+      <span class="footer-link">条款</span>
     </div>
   </div>
 
@@ -352,17 +363,20 @@
 
     function showResult(value) {
       resultEl.textContent = value;
+      resultEl.removeAttribute('aria-label');
       resultEl.classList.remove('error');
       inputA.classList.remove('error');
       inputB.classList.remove('error');
       inputA.removeAttribute('aria-invalid');
       inputB.removeAttribute('aria-invalid');
       errorIcon.classList.remove('visible');
-      window.getSelection().removeAllRanges();
+      const sel = window.getSelection();
+      if (sel && resultEl.contains(sel.anchorNode)) sel.removeAllRanges();
     }
 
     function showError() {
       resultEl.textContent = '×';
+      resultEl.setAttribute('aria-label', '输入错误');
       resultEl.classList.add('error');
       inputA.classList.add('error');
       inputB.classList.add('error');
@@ -404,7 +418,7 @@
     inputA.addEventListener('input', handleInput);
     inputB.addEventListener('input', handleInput);
     resultEl.addEventListener('dblclick', selectResultText);
-    document.querySelector('.btn')?.addEventListener('click', handleInput);
+    document.querySelector('.btn').addEventListener('click', handleInput);
   </script>
 </body>
 </html>
