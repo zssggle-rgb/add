@@ -79,7 +79,6 @@
     .logo .g-red { color: #ea4335; }
     .logo .g-yellow { color: #fbbc05; }
 
-
     /* ── Calculator section (Google search box style) ── */
     .calculator {
       display: flex;
@@ -206,6 +205,11 @@
       box-shadow: none;
     }
 
+    .btn:focus-visible {
+      outline: 2px solid #2563eb;
+      outline-offset: 2px;
+    }
+
     /* ── Hint text ── */
     .hint {
       text-align: center;
@@ -319,10 +323,10 @@
   <!-- Footer -->
   <div class="footer">
     <div class="footer-links">
-      <a class="footer-link" href="#" onclick="return false">关于</a>
-      <a class="footer-link" href="#" onclick="return false">广告</a>
-      <a class="footer-link" href="#" onclick="return false">隐私权</a>
-      <a class="footer-link" href="#" onclick="return false">条款</a>
+      <a class="footer-link" href="#" tabindex="-1" onclick="return false">关于</a>
+      <a class="footer-link" href="#" tabindex="-1" onclick="return false">广告</a>
+      <a class="footer-link" href="#" tabindex="-1" onclick="return false">隐私权</a>
+      <a class="footer-link" href="#" tabindex="-1" onclick="return false">条款</a>
     </div>
   </div>
 
@@ -335,12 +339,11 @@
     const errorIcon = document.querySelector('.error-icon');
 
     function validate(value) {
-      if (value === '') return true;
+      if (value === '' || value === '-') return true;
       if (!VALIDATION_REGEX.test(value)) return false;
+      if (value === '.' || value.endsWith('.')) return false;
       const parsed = parseFloat(value);
-      if (isNaN(parsed)) return false;
-      // Ensure parseFloat consumed the entire string (not just a numeric prefix)
-      return String(parsed) === value;
+      return !isNaN(parsed);
     }
 
     function calculate(a, b) {
@@ -352,7 +355,10 @@
       resultEl.classList.remove('error');
       inputA.classList.remove('error');
       inputB.classList.remove('error');
+      inputA.removeAttribute('aria-invalid');
+      inputB.removeAttribute('aria-invalid');
       errorIcon.classList.remove('visible');
+      window.getSelection().removeAllRanges();
     }
 
     function showError() {
@@ -360,10 +366,13 @@
       resultEl.classList.add('error');
       inputA.classList.add('error');
       inputB.classList.add('error');
+      inputA.setAttribute('aria-invalid', 'true');
+      inputB.setAttribute('aria-invalid', 'true');
       errorIcon.classList.add('visible');
     }
 
     function selectResultText() {
+      if (resultEl.classList.contains('error')) return;
       const selection = window.getSelection();
       if (!selection) return;
       const range = document.createRange();
@@ -395,7 +404,7 @@
     inputA.addEventListener('input', handleInput);
     inputB.addEventListener('input', handleInput);
     resultEl.addEventListener('dblclick', selectResultText);
-    document.querySelector('.btn').addEventListener('click', handleInput);
+    document.querySelector('.btn')?.addEventListener('click', handleInput);
   </script>
 </body>
 </html>

@@ -501,8 +501,7 @@ test("TC-ADD-028 双击结果选中文本", async ({ page }) => {
   await target(page, {"selector": "#b"}).fill("3");
   await expect(target(page, {"selector": "#result"})).toHaveText("10");
   await target(page, {"selector": "#result"}).dblclick();
-  const selectedText = await page.evaluate(() => window.getSelection().toString());
-  expect(selectedText).toBe("10");
+  await expectSelectedText(page, target(page, {"selector": "#result"}), "10", "TC-ADD-028");
   expect(consoleErrors).toEqual([]);
   await saveScreenshot(page, "TC-ADD-028", "TC-ADD-028-evidence", true);
 });
