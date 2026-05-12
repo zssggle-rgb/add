@@ -476,6 +476,7 @@ test("TC-ADD-026 按钮触发计算", async ({ page }) => {
   await target(page, {"selector": "#b"}).fill("5");
   await target(page, {"selector": ".btn"}).click();
   await expect(target(page, {"selector": "#result"})).toHaveText("8");
+  expect(consoleErrors).toEqual([]);
   await saveScreenshot(page, "TC-ADD-026", "TC-ADD-026-evidence", true);
 });
 
@@ -488,6 +489,7 @@ test("TC-ADD-027 按钮空输入", async ({ page }) => {
   await target(page, {"selector": "#a"}).fill("abc");
   await target(page, {"selector": ".btn"}).click();
   await expect(target(page, {"selector": "#result"})).toHaveText("×");
+  expect(consoleErrors).toEqual([]);
   await saveScreenshot(page, "TC-ADD-027", "TC-ADD-027-evidence", true);
 });
 
@@ -497,8 +499,10 @@ test("TC-ADD-028 双击结果选中文本", async ({ page }) => {
   await openTarget(page, "index.html");
   await target(page, {"selector": "#a"}).fill("7");
   await target(page, {"selector": "#b"}).fill("3");
+  await expect(target(page, {"selector": "#result"})).toHaveText("10");
   await target(page, {"selector": "#result"}).dblclick();
   const selectedText = await page.evaluate(() => window.getSelection().toString());
   expect(selectedText).toBe("10");
+  expect(consoleErrors).toEqual([]);
   await saveScreenshot(page, "TC-ADD-028", "TC-ADD-028-evidence", true);
 });
