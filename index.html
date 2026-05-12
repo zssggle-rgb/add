@@ -310,7 +310,7 @@
     </div>
 
     <div class="buttons">
-      <button type="button" class="btn" onclick="handleInput()">Google 计算</button>
+      <button type="button" class="btn">Google 计算</button>
     </div>
 
     <p class="hint">输入数字，实时计算</p>
@@ -395,6 +395,7 @@
     inputA.addEventListener('input', handleInput);
     inputB.addEventListener('input', handleInput);
     resultEl.addEventListener('dblclick', selectResultText);
+    document.querySelector('.btn').addEventListener('click', handleInput);
   </script>
 </body>
 </html>
