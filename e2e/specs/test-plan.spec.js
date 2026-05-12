@@ -467,3 +467,14 @@ test("TC-ADD-025 active状态样式", async ({ page }) => {
   await page.mouse.up();
   await saveScreenshot(page, "TC-ADD-025", "TC-ADD-025-evidence", true);
 });
+
+test("TC-ADD-026 按钮触发计算", async ({ page }) => {
+  const consoleErrors = [];
+  page.on('console', msg => { if (msg.type() === 'error') consoleErrors.push(msg.text()); });
+  await openTarget(page, "index.html");
+  await target(page, {"selector": "#a"}).fill("3");
+  await target(page, {"selector": "#b"}).fill("5");
+  await target(page, {"selector": ".btn"}).click();
+  await expect(target(page, {"selector": "#result"})).toHaveText("8");
+  await saveScreenshot(page, "TC-ADD-026", "TC-ADD-026-evidence", true);
+});

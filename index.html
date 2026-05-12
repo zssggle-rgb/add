@@ -78,7 +78,7 @@
     .logo .g-blue { color: #4285f4; }
     .logo .g-red { color: #ea4335; }
     .logo .g-yellow { color: #fbbc05; }
-    .logo .g-green { color: #34a853; }
+
 
     /* ── Calculator section (Google search box style) ── */
     .calculator {
@@ -104,7 +104,7 @@
       font-family: inherit;
       color: #202124;
       background: #ffffff;
-      transition: all 150ms ease-out;
+      transition: border-color 150ms ease-out, box-shadow 150ms ease-out;
       outline: none;
       box-shadow: none;
     }
@@ -184,22 +184,21 @@
     .btn {
       height: 36px;
       padding: 0 16px;
-      border: none;
+      border: 1px solid transparent;
       border-radius: 4px;
       background: #f8f9fa;
       color: #3c4043;
       font-size: 14px;
       font-family: inherit;
       cursor: pointer;
-      transition: all 150ms ease;
+      transition: border-color 150ms ease, box-shadow 150ms ease, background 150ms ease;
       line-height: 36px;
       user-select: none;
     }
 
     .btn:hover {
       box-shadow: 0 1px 3px rgba(60, 64, 67, 0.24);
-      border: 1px solid #dadce0;
-      padding: 0 15px;
+      border-color: #dadce0;
     }
 
     .btn:active {
