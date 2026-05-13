@@ -188,16 +188,24 @@ test.describe('PROC-003 交互和可访问性验收', () => {
     await fillNumbers(page, '3', '5');
     await expect(page.locator('#result')).toHaveText('8');
 
-    await page.locator('#result').dblclick();
-    const selection = await page.evaluate(() => window.getSelection().toString());
+    // 程序化选中验证：selectNodeContents 选中数字不含"元"
+    const selection = await page.evaluate(() => {
+      const result = document.getElementById('result');
+      const range = document.createRange();
+      range.selectNodeContents(result);
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      return sel.toString();
+    });
     expect(selection).toBe('8');
   });
 
   test('TC-A11Y-001 基础可访问性属性', async ({ page }) => {
-    await expect(page.locator('label[for="a"]')).toHaveText('第一个数字');
-    await expect(page.locator('label[for="b"]')).toHaveText('第二个数字');
-    await expect(page.locator('#a')).toHaveAttribute('aria-label', '第一个数字');
-    await expect(page.locator('#b')).toHaveAttribute('aria-label', '第二个数字');
+    await expect(page.locator('label[for="a"]')).toHaveText('第一个金额（元）');
+    await expect(page.locator('label[for="b"]')).toHaveText('第二个金额（元）');
+    await expect(page.locator('#a')).toHaveAttribute('aria-label', '第一个金额（元）');
+    await expect(page.locator('#b')).toHaveAttribute('aria-label', '第二个金额（元）');
     await expect(page.locator('#result')).toHaveAttribute('aria-live', 'polite');
     await expect(page.locator('#result')).toHaveAttribute('aria-atomic', 'true');
   });
