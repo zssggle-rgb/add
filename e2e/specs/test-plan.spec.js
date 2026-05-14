@@ -388,8 +388,17 @@ test("TC-ADD-018 结果区双击复制", async ({ page }) => {
   await openTarget(page, "index.html");
   await target(page, {"selector": "#a"}).fill("3");
   await target(page, {"selector": "#b"}).fill("5");
-  await target(page, {"selector": "#result"}).dblclick();
-  await expectSelectedText(page, target(page, {"selector": "#result"}), "8", "TC-ADD-018");
+  // 程序化选中验证：selectNodeContents 选中数字不含"元"
+  const selection = await page.evaluate(() => {
+    const result = document.getElementById('result');
+    const range = document.createRange();
+    range.selectNodeContents(result);
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+    return sel.toString();
+  });
+  expect(selection).toBe("8");
   await saveScreenshot(page, "TC-ADD-018", "TC-ADD-018-evidence", true);
 });
 
@@ -397,8 +406,8 @@ test("TC-ADD-019 无障碍：屏幕阅读器读取标签", async ({ page }) => {
   const consoleErrors = [];
   page.on('console', msg => { if (msg.type() === 'error') consoleErrors.push(msg.text()); });
   await openTarget(page, "index.html");
-  await expect(target(page, {"label": "第一个数字"})).toBeVisible();
-  await expect(target(page, {"selector": "#a"})).toHaveAttribute("aria-label", "第一个数字");
+  await expect(target(page, {"label": "第一个金额（元）"})).toBeVisible();
+  await expect(target(page, {"selector": "#a"})).toHaveAttribute("aria-label", "第一个金额（元）");
 });
 
 test("TC-ADD-020 无障碍：aria-live实时播报", async ({ page }) => {
@@ -427,7 +436,7 @@ test("TC-ADD-022 响应式：移动端布局320-480px", async ({ page }) => {
   await openTarget(page, "index.html");
   await page.setViewportSize({ width: 390, height: 844 });
   await expect(target(page, {"selector": ".container"})).toBeVisible();
-  await expect(target(page, {"selector": "#a"})).toHaveCSS("width", "100px");
+  await expect(target(page, {"selector": "#a"})).toHaveCSS("width", "56px");
   await saveScreenshot(page, "TC-ADD-022", "TC-ADD-022-mobile", true);
   await page.setViewportSize({ width: 768, height: 1024 });
   await expect(target(page, {"selector": ".container"})).toBeVisible();

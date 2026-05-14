@@ -26,7 +26,7 @@
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
       padding: 32px;
       width: 100%;
-      max-width: 400px;
+      max-width: 460px;
     }
 
     h1 {
@@ -74,11 +74,6 @@
       border-color: #9ca3af;
     }
 
-    input[type="text"]:active {
-      border-color: #6b7280;
-      transform: translateY(1px);
-    }
-
     input[type="text"]:focus {
       border-color: #2563eb;
       box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
@@ -89,9 +84,23 @@
       outline-offset: 2px;
     }
 
+    input[type="text"]:active,
+    input[type="text"]:focus:active {
+      border-color: #6b7280;
+      transform: translateY(1px);
+    }
+
     input[type="text"].error {
       border-color: #dc2626;
       background: #fef2f2;
+    }
+
+    .unit {
+      font-size: 14px;
+      font-weight: 400;
+      color: #5f6368;
+      margin-left: 4px;
+      user-select: none;
     }
 
     .operator, .equals {
@@ -108,6 +117,18 @@
       min-width: 80px;
       text-align: center;
       transition: color 150ms ease-out;
+    }
+
+    .result-unit {
+      font-size: 16px;
+      font-weight: 400;
+      color: #5f6368;
+      margin-left: 4px;
+      user-select: none;
+    }
+
+    #result.error + .result-unit {
+      display: none;
     }
 
     #result.error {
@@ -131,7 +152,7 @@
       display: none;
     }
 
-    #result.error + .error-icon,
+    #result.error ~ .error-icon,
     .error-icon.visible {
       display: inline;
     }
@@ -139,15 +160,34 @@
     @media (max-width: 480px) {
       .container {
         max-width: 100%;
-        padding: 24px 16px;
+        padding: 12px 4px;
         border-radius: 8px;
-        margin: 16px;
+        margin: 4px;
       }
       input[type="text"] {
-        width: 100px;
+        width: 56px;
+        flex-basis: 56px;
+        padding: 6px;
+        font-size: 14px;
       }
       .calculator {
-        gap: 8px;
+        gap: 2px;
+        flex-wrap: nowrap;
+      }
+      .unit {
+        font-size: 12px;
+        margin-left: 1px;
+      }
+      .result-unit {
+        font-size: 13px;
+        margin-left: 1px;
+      }
+      .operator, .equals {
+        font-size: 18px;
+      }
+      #result {
+        font-size: 24px;
+        min-width: 40px;
       }
     }
   </style>
@@ -156,13 +196,15 @@
   <div class="container">
     <h1>加法器</h1>
     <div class="calculator">
-      <label for="a" class="sr-only">第一个数字</label>
-      <input id="a" type="text" inputmode="decimal" aria-label="第一个数字" />
+      <label for="a" class="sr-only">第一个金额（元）</label>
+      <input id="a" type="text" inputmode="decimal" aria-label="第一个金额（元）" maxlength="20" />
+      <span class="unit" aria-hidden="true">元</span>
       <span class="operator">+</span>
-      <label for="b" class="sr-only">第二个数字</label>
-      <input id="b" type="text" inputmode="decimal" aria-label="第二个数字" />
+      <label for="b" class="sr-only">第二个金额（元）</label>
+      <input id="b" type="text" inputmode="decimal" aria-label="第二个金额（元）" maxlength="20" />
+      <span class="unit" aria-hidden="true">元</span>
       <span class="equals">=</span>
-      <span id="result" aria-live="polite" aria-atomic="true">0</span>
+      <span id="result" aria-live="polite" aria-atomic="true" aria-label="计算结果：0 元">0</span><span class="result-unit" aria-hidden="true">元</span>
       <span class="error-icon" aria-hidden="true">&#x2715;</span>
     </div>
     <p class="hint">输入数字，实时计算</p>
@@ -191,6 +233,7 @@
 
     function showResult(value) {
       resultEl.textContent = value;
+      resultEl.setAttribute('aria-label', '计算结果：' + value + ' 元');
       resultEl.classList.remove('error');
       inputA.classList.remove('error');
       inputB.classList.remove('error');
@@ -199,6 +242,7 @@
 
     function showError() {
       resultEl.textContent = '×';
+      resultEl.setAttribute('aria-label', '输入错误');
       resultEl.classList.add('error');
       inputA.classList.add('error');
       inputB.classList.add('error');
