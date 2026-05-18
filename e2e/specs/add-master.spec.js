@@ -210,19 +210,19 @@ test.describe('PROC-003 交互和可访问性验收', () => {
     await expect(page.locator('#result')).toHaveAttribute('aria-atomic', 'true');
   });
 
-  test('TC-UI-ALIGN-001 输入框数字居中对齐', async ({ page }) => {
+  test('TC-UI-ALIGN-001 输入框数字右对齐', async ({ page }) => {
     await fillNumbers(page, '3', '5');
 
     const inputAAlignment = await page.locator('#a').evaluate((el) => {
       const styles = window.getComputedStyle(el);
       return styles.textAlign;
     });
-    expect(inputAAlignment).toBe('center');
+    expect(inputAAlignment).toBe('right');
 
     const inputBAlignment = await page.locator('#b').evaluate((el) => {
       const styles = window.getComputedStyle(el);
       return styles.textAlign;
     });
-    expect(inputBAlignment).toBe('center');
+    expect(inputBAlignment).toBe('right');
   });
 });
