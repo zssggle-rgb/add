@@ -176,6 +176,12 @@
     const resultEl = document.getElementById('result');
     const errorIcon = document.querySelector('.error-icon');
 
+
+    const inputA = document.getElementById('a');
+    const inputB = document.getElementById('b');
+    const resultEl = document.getElementById('result');
+    const errorIcon = document.querySelector('.error-icon');
+
     function validate(value) {
       if (value === '') return true;
       if (!VALIDATION_REGEX.test(value)) return false;
