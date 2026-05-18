@@ -74,14 +74,14 @@
       border-color: #9ca3af;
     }
 
-    input[type="text"]:active {
-      border-color: #6b7280;
-      transform: translateY(1px);
-    }
-
     input[type="text"]:focus {
       border-color: #2563eb;
       box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    }
+
+    input[type="text"]:active {
+      border-color: #6b7280;
+      transform: translateY(1px);
     }
 
     input[type="text"]:focus-visible {
@@ -170,6 +170,12 @@
 
   <script>
     const VALIDATION_REGEX = /^-?\d*\.?\d*$/;
+
+    const inputA = document.getElementById('a');
+    const inputB = document.getElementById('b');
+    const resultEl = document.getElementById('result');
+    const errorIcon = document.querySelector('.error-icon');
+
 
     const inputA = document.getElementById('a');
     const inputB = document.getElementById('b');
