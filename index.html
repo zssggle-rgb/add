@@ -161,6 +161,9 @@
       <span class="operator">+</span>
       <label for="b" class="sr-only">第二个数字</label>
       <input id="b" type="text" inputmode="decimal" aria-label="第二个数字" />
+      <span class="operator">+</span>
+      <label for="c" class="sr-only">第三个数字</label>
+      <input id="c" type="text" inputmode="decimal" aria-label="第三个数字" />
       <span class="equals">=</span>
       <span id="result" aria-live="polite" aria-atomic="true">0</span>
       <span class="error-icon" aria-hidden="true">&#x2715;</span>
@@ -173,6 +176,7 @@
 
     const inputA = document.getElementById('a');
     const inputB = document.getElementById('b');
+    const inputC = document.getElementById('c');
     const resultEl = document.getElementById('result');
     const errorIcon = document.querySelector('.error-icon');
 
@@ -185,8 +189,8 @@
       return String(parsed) === value;
     }
 
-    function calculate(a, b) {
-      return Number((a + b).toFixed(10));
+    function calculate(a, b, c) {
+      return Number((a + b + c).toFixed(10));
     }
 
     function showResult(value) {
@@ -194,6 +198,7 @@
       resultEl.classList.remove('error');
       inputA.classList.remove('error');
       inputB.classList.remove('error');
+      inputC.classList.remove('error');
       errorIcon.classList.remove('visible');
     }
 
@@ -202,31 +207,35 @@
       resultEl.classList.add('error');
       inputA.classList.add('error');
       inputB.classList.add('error');
+      inputC.classList.add('error');
       errorIcon.classList.add('visible');
     }
 
     function handleInput() {
       const aVal = inputA.value;
       const bVal = inputB.value;
+      const cVal = inputC.value;
 
-      if (!validate(aVal) || !validate(bVal)) {
+      if (!validate(aVal) || !validate(bVal) || !validate(cVal)) {
         showError();
         return;
       }
 
       const a = aVal === '' ? 0 : parseFloat(aVal);
       const b = bVal === '' ? 0 : parseFloat(bVal);
+      const c = cVal === '' ? 0 : parseFloat(cVal);
 
-      if (isNaN(a) || isNaN(b)) {
+      if (isNaN(a) || isNaN(b) || isNaN(c)) {
         showError();
         return;
       }
 
-      showResult(calculate(a, b));
+      showResult(calculate(a, b, c));
     }
 
     inputA.addEventListener('input', handleInput);
     inputB.addEventListener('input', handleInput);
+    inputC.addEventListener('input', handleInput);
   </script>
 </body>
 </html>
